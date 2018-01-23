@@ -444,8 +444,7 @@ body {
 }
 .header-inner {
   margin: 0 auto;
-  padding: 100px 0 70px;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
@@ -457,7 +456,7 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
@@ -474,7 +473,7 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 700px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
@@ -1095,6 +1094,9 @@ pre .javascript .function {
 .header-inner {
   position: relative;
 }
+.header-inner .site-brand-wrapper {
+  float: left;
+}
 .headband {
   height: 3px;
   background: #222;
@@ -1267,7 +1269,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .posts-expand {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 @media (max-width: 767px) {
   .posts-expand {
@@ -1368,7 +1370,7 @@ pre .javascript .function {
 }
 .posts-collapse .collection-title {
   position: relative;
-  margin: 60px 0;
+  margin: 20px 0;
 }
 .posts-collapse .collection-title h1,
 .posts-collapse .collection-title h2 {
@@ -1389,9 +1391,6 @@ pre .javascript .function {
   height: 8px;
   background: #bbb;
   border-radius: 50%;
-}
-.posts-collapse .post {
-  margin: 30px 0;
 }
 .posts-collapse .post-header {
   position: relative;
@@ -1434,6 +1433,8 @@ pre .javascript .function {
 }
 .posts-collapse .post-title {
   margin-left: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 16px;
   font-weight: normal;
   line-height: inherit;
@@ -1495,7 +1496,7 @@ pre .javascript .function {
   font-size: 16px;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 20px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
@@ -1822,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6eff16;
+  background: #886333;
 }
 .links-of-blogroll {
   font-size: 13px;
