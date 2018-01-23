@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lilili001.github.io/2018/01/23/test/">
+    <link itemprop="mainEntityOfPage" href="https://lilili001.github.io/2018/01/23/es6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Miya Yeh">
@@ -302,7 +302,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/23/test/" itemprop="url">test</a></h1>
+                <a class="post-title-link" href="/2018/01/23/es6/" itemprop="url">es6</a></h1>
         
 
         <div class="post-meta">
@@ -324,6 +324,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/es6/" itemprop="url" rel="index">
+                    <span itemprop="name">es6</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -354,7 +387,158 @@
       
         
           
-            
+            <h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
+<pre><code>if(true){
+    let name # &quot;alice&quot;;
+}
+console.log(name) // nam is not defined
+</code></pre><p>name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念</p>
+<h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h2><ul>
+<li>var 可以在全局中重复声明 这样的结果是会覆盖别人写的变量</li>
+<li><p>let 和 const 不能在同一个作用域中重复声明变量</p>
+<pre><code>let name # &quot;alice&quot;;
+let name # &quot;joe&quot;;
+console.log(name); //Identifier &apos;name&apos; has already been declared
+</code></pre></li>
+</ul>
+<pre><code>//不同作用域 虽然变量命一样 但是值不一样 
+//以下代码 如果在 console中打印 name的值是 joe,因为是全局的
+let name # &quot;joe&quot;;
+console.log(name);  //joe
+if(true){
+   let name # &quot;melody&quot;;
+   console.log(name)//melody
+}
+</code></pre><ul>
+<li><p>let 可以重新赋值， 但是const不可以</p>
+<pre><code>let name # &quot;alice&quot;;
+    name # &quot;sdf&quot;;  //不报错
+
+const age# &quot;AGE&quot;;
+     age # &quot;arg&quot;;// 报错 Assignment to constant variable.
+</code></pre></li>
+<li><p>const 属性可以赋值</p>
+<pre><code>const person # {
+     name:&apos;alice&apos;,
+     age:12
+  }
+
+person.age # 13;//可以这样赋值 但是不可以整个person # {}这样赋值, 这样就改变了变量的指针 如果连属性都不让赋值可以这样
+
+const jelley # Object.freeze(person);
+</code></pre></li>
+</ul>
+<h2 id="let-和-const-私有化"><a href="#let-和-const-私有化" class="headerlink" title="let 和 const 私有化"></a>let 和 const 私有化</h2><p>如果直接写全局变量，不管是 var,let,const 都会覆盖 window的全局变量 , 我们可以使用闭包使变量私有化，也可以使用{} 来实现：</p>
+<pre><code>(function(){
+        let name # &quot;alice&quot;;
+        console.log(name)
+})();
+
+
+{
+        const name # &quot;joe&quot;;
+        console.log(name)// joe
+ }
+ console.log(name)// &quot;&quot;
+</code></pre><p>应用场景：</p>
+<pre><code>//应用场景 for循环
+for( var i # 0;i&lt;10;i++ ){
+    console.log(i);// 0,1,2,.....10
+    setTimeout(function(){
+        console.log(`i:${i}`)//10
+    },1000);
+}
+console.log(&apos;#########&apos;)
+
+for( let i # 0;i&lt;10;i++ ){
+    console.log(i);// 0,1,2,.....10
+    setTimeout(function(){
+        console.log(`i:${i}`)//0,1,2,.....10
+    },1000);
+}
+</code></pre><h2 id="临时性死区"><a href="#临时性死区" class="headerlink" title="临时性死区"></a>临时性死区</h2><p>var 中的变量提升：</p>
+<pre><code>console.log(color);//undefined
+     var color # &quot;yellow&quot;;
+
+//这个结果实际是 
+
+var color;
+console.log(&apos;color&apos;);
+color#&quot;yellow&quot;;
+</code></pre><p>let 不是, 在变量未声明之前 变量处于暂时死区的状态</p>
+<pre><code>console.log(color);//uncaught ReferenceError: color is not defined
+     let color # &quot;yellow&quot;;
+</code></pre><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><pre><code>const numbers # [1,2,3,4,5,6];
+const  double # numbers.map(function (number) {
+    return number*2;
+});
+
+const double2 # numbers.map( (number,i) #&gt;{
+    return `${i}:${number*2}`;
+});
+</code></pre><p>箭头符号 如果只有一个参数 () 可省略，如果有多个参数则必须要写（）</p>
+<h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 # numbers.map( (number,i) #&gt; `${i}:${number*2}`);
+</code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet # name #&gt; {alert(`hello ${name}`)};
+   greet(&apos;jelley&apos;);
+</code></pre><h2 id="箭头函数-this"><a href="#箭头函数-this" class="headerlink" title="箭头函数 this"></a>箭头函数 this</h2><pre><code>const Alice # {
+        name:&apos;Alice&apos;,
+        hobbies:[&apos;Coding&apos;,&apos;Sleeping&apos;,&apos;Reading&apos;],
+        printHobbies:function(){
+            this.hobbies.map( hobby#&gt;{
+                console.log( `${this.name} loves ${hobby}` );
+            });
+        }
+    };
+  Alice.printHobbies();
+</code></pre><h2 id="函数默认值"><a href="#函数默认值" class="headerlink" title="函数默认值"></a>函数默认值</h2><pre><code>function multiply(a,b){
+         a # a || 5;
+         b # b || 3;
+         return a*b;
+     }
+
+//es6 函数默认值
+function multiply(a#2,b#4){
+     return a*b;
+    }
+
+multiply(undefined,5);
+</code></pre><h2 id="不适用的场景"><a href="#不适用的场景" class="headerlink" title="不适用的场景"></a>不适用的场景</h2><pre><code>－ 构造函数
+－ 当真正需要用this的时候
+</code></pre><h1 id="字符串模版"><a href="#字符串模版" class="headerlink" title="字符串模版"></a>字符串模版</h1><pre><code>const name = &quot;alice&quot;;
+const age = 5;
+const str = `My name is ${name} My age is ${age*5};`
+</code></pre><p>  字符串模版可以用｀｀嵌套, 也可以使用表达式</p>
+<pre><code>const jelley = {
+     name:&apos;Jelley&apos;,
+     date:&apos;2018-01-23&apos;,
+     todos:[
+         {name:&apos;Go to school&apos;,completed:false},
+         {name:&apos;Watch Moving&apos;,completed:true},
+         {name:&apos;Running&apos;,completed:true},
+     ]
+ };
+ function renderTodos(todo) {
+     return `
+     &lt;ul&gt;
+         ${jelley.todos.map( todo=&gt; `&lt;li&gt;
+             ${todo.name} ${todo.completed ? &quot;✅&quot;: &quot;❎&quot;}
+             &lt;/li&gt;` ).join(&quot;&quot;)}
+     &lt;/ul&gt;
+         `;
+ }
+ const template = `
+     &lt;nav class=&quot;panel&quot;&gt;
+       &lt;p class=&quot;panel-heading&quot;&gt;
+         ${jelley.name}
+       &lt;/p&gt;
+       &lt;p class=&quot;panel-blocks&quot;&gt;
+          ${renderTodos(jelley)}
+       &lt;/p&gt;
+     &lt;/nav&gt;
+ `;
+
+ document.body.innerHTML = template;
+</code></pre>
           
         
       
@@ -608,7 +792,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
