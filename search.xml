@@ -70,8 +70,7 @@ $ webpack-dev-server --content-base src --port=3000
     <entry>
       <title><![CDATA[React]]></title>
       <url>/2018/01/24/react/</url>
-      <content type="html"><![CDATA[<p>命令：$ webpack –watch</p>
-<ul>
+      <content type="html"><![CDATA[<ul>
 <li><p>初探</p>
 <pre><code>import React from &quot;react&quot;;
 import ReactDom from &quot;react-dom&quot;;
@@ -160,6 +159,64 @@ export default class Layout extends React.Component{
 
     }
 }
+</code></pre></li>
+<li><p>state使用 状态自动更新</p>
+<pre><code>constructor(){
+    super();
+    this.state = {name:&apos;alice&apos;};
+}  
+render(){
+    setTimeout(()=&gt;{this.setState({name:&apos;bob&apos;})},1000);
+     return (
+              &lt;div&gt;
+                  {this.state.name}
+                  &lt;Header/&gt;
+                  &lt;Footer/&gt;
+              &lt;/div&gt;
+         );
+
+}    
+</code></pre></li>
+<li><p>props</p>
+<p>  父组件 Header</p>
+<pre><code>render(){
+    const title=&quot;Welcome Will&quot;;
+     return (
+               &lt;Title title={title}/&gt;
+         );
+
+}
+</code></pre><p>  子组件 Title</p>
+<pre><code>render(){
+     return (
+              &lt;h1&gt;{this.props.title}&lt;/h1&gt;
+         );
+
+}    
+</code></pre><p>  state 结合 props</p>
+<pre><code>//父组件 Header
+constructor(){
+    super();
+    this.state={title:&apos;will&apos;};
+}
+
+render(){
+    setTimeout(()=&gt;{
+        this.setState({title:&apos;welcome will&apos;})
+    },1000);
+     return (
+               &lt;Title title={this.state.title} /&gt;
+         );
+
+}
+
+//子组件 Title    
+render(){
+     return (
+              &lt;h1&gt;{this.props.title}&lt;/h1&gt;
+         );
+
+}                
 </code></pre></li>
 </ul>
 ]]></content>
