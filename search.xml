@@ -3,6 +3,189 @@
   
     
     <entry>
+      <title><![CDATA[npm]]></title>
+      <url>/2018/01/24/npm/</url>
+      <content type="html"><![CDATA[<ul>
+<li>卸载包 <code>npm uninstall -g webpack-server-dev</code></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> npm </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[webpack初探]]></title>
+      <url>/2018/01/24/webpack/</url>
+      <content type="html"><![CDATA[<h1 id="webpack-初探"><a href="#webpack-初探" class="headerlink" title="webpack 初探"></a>webpack 初探</h1><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><pre><code> $ npm init
+$ npm install -S webpack 
+$ npm install -g webpack
+$ touch webpack.config.js
+</code></pre><h3 id="webpack-config-js-配置"><a href="#webpack-config-js-配置" class="headerlink" title="webpack.config.js 配置"></a>webpack.config.js 配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debug = process.env.NODE_ENV !== <span class="string">"production"</span>;</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    context: __dirname,<span class="comment">//项目的绝对路径 下面的配置以这个为基础</span></span><br><span class="line">    devtool: debug ? <span class="string">"inline-sourcemap"</span> : <span class="literal">false</span>,</span><br><span class="line">    entry: <span class="string">"./js/script.js"</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">"/js"</span>,</span><br><span class="line">        filename: <span class="string">"script.min.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: debug ? [] : [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.DedupePlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.OccurrenceOrderPlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123; <span class="attr">mangle</span>: <span class="literal">false</span>, <span class="attr">sourcemap</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="文件-js-script-js-引用-src-module1-js-src-module2-js"><a href="#文件-js-script-js-引用-src-module1-js-src-module2-js" class="headerlink" title="文件 js/script.js 引用 src/module1.js  src/module2.js"></a>文件 js/script.js 引用 src/module1.js  src/module2.js</h3><p>script.js<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">require</span>(<span class="params">'../src/module1.js'</span>)</span>;</span><br><span class="line"><span class="function"><span class="title">require</span>(<span class="params">'../src/module2.js'</span>)</span>;</span><br></pre></td></tr></table></figure></p>
+<p>module1.js<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>('module1')</span><br></pre></td></tr></table></figure></p>
+<p>module2.js<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>('module2')</span><br></pre></td></tr></table></figure></p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>开发环境<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> webpack</span></span><br></pre></td></tr></table></figure></p>
+<p>生产<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> NODE_ENV = production webpack</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h1><p>让项目以http方式在浏览器运行</p>
+<pre><code>$ npm install -S webpack-dev-server
+
+//设置运行目录 以及端口
+$ webpack-dev-server --content-base src --port=3000
+</code></pre><p>此时就可以在浏览器访问　localhost:3000 </p>
+<p>实时update:</p>
+<ul>
+<li><p>通过浏览器url</p>
+<pre><code>http://localhost:3000/webpack-dev-server/index.html
+</code></pre></li>
+<li><p>通过 –inline –hot</p>
+<pre><code>$ webpack-dev-server --content-base src --port=3000 --inline --hot     
+</code></pre></li>
+<li>通过 npm run dev</li>
+</ul>
+<p>将这句命令 <code>$ webpack-dev-server --content-base src --port=3000 --inline --hot</code><br>拷到package.json中就可以直接用 <code>npm run dev</code>来实现及时热加载了</p>
+<p>前提是全局安装了　wepack-dev-server <code>$ npm install -g webpack-dev-server</code><br>但是我们可以不用全局安装 可以直接使用node_modules中的来实现</p>
+<p>package.json:<br><code>&quot;dev&quot;:&quot;./node_modules/.bin/webpack-dev-server --content-base src --port=3000 --inline --hot&quot;</code></p>
+<h1 id="有用的命令"><a href="#有用的命令" class="headerlink" title="有用的命令"></a>有用的命令</h1><pre><code>$ webpack --watch
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+            <category> Js </category>
+            
+            <category> webpack </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[React]]></title>
+      <url>/2018/01/24/react/</url>
+      <content type="html"><![CDATA[<p>命令：$ webpack –watch</p>
+<ul>
+<li><p>初探</p>
+<pre><code>import React from &quot;react&quot;;
+import ReactDom from &quot;react-dom&quot;;
+class Layout extends React.Component{
+    render(){
+         return (
+                  &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+             );
+
+    }
+}
+
+const app = document.getElementById(&apos;app&apos;);
+ReactDom.render(&lt;Layout/&gt;,app);
+</code></pre></li>
+<li><p>jsx 元素必须有一个包裹，如果这样就报错</p>
+<pre><code>render(){
+     return (
+              &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+              &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+         );
+
+}
+</code></pre></li>
+<li><p>变量的使用</p>
+<pre><code>render(){
+    const name = &quot;alice&quot;;
+     return (
+              &lt;h1&gt;{name} sdfsdf时尚aaabbb&lt;/h1&gt;
+         );
+
+}
+
+ //表达式
+ return (
+      &lt;h1&gt;{4*4} sdfsdf时尚aaabbb&lt;/h1&gt;
+ );
+
+//使用函数
+return (
+      &lt;h1&gt;{(function(){return 3;})()} sdfsdf时尚aaabbb&lt;/h1&gt;
+ );    
+
+ //方法
+ class Layout extends React.Component{
+    getVal(){
+        return &apos;will&apos;;
+    }
+    render(){
+         return (
+                  &lt;h1&gt;{this.getVal()} sdfsdf时尚aaabbb&lt;/h1&gt;
+             );
+
+    }
+}
+//constructor方法 放各种变量
+constructor(){
+    super();
+    this.name = &apos;will&apos;;
+}
+render(){
+     return (
+              &lt;h1&gt;{this.name} sdfsdf时尚aaabbb&lt;/h1&gt;
+         );
+
+}    
+</code></pre></li>
+<li><p>文件组件模块化</p>
+<p>  client.js</p>
+<pre><code>import React from &quot;react&quot;;
+import ReactDom from &quot;react-dom&quot;;
+import Layout from &apos;./components/Layout&apos;;
+const app = document.getElementById(&apos;app&apos;);
+ReactDom.render(&lt;Layout/&gt;,app);
+</code></pre><p>  components/Layout.js</p>
+<pre><code>import React from &quot;react&quot;;
+export default class Layout extends React.Component{
+    constructor(){
+        super();
+        this.name = &apos;will&apos;;
+    }
+    render(){
+         return (
+                  &lt;h1&gt;{this.name} sdfsdf时尚aaabbb&lt;/h1&gt;
+             );
+
+    }
+}
+</code></pre></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+            <category> Js </category>
+            
+            <category> react </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> a </tag>
+            
+            <tag> b </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[es6]]></title>
       <url>/2018/01/23/es6/</url>
       <content type="html"><![CDATA[<h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
@@ -275,15 +458,14 @@ console.log(one, others );//one (2) [&quot;two&quot;, &quot;three&quot;]
 //交换变量 
 let a=1,b=2;
 const [a,b] = [b,a];
-</code></pre><h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><pre><code>for (let fruit of arr){
-    if(fruit == &apos;pear&apos;) continue;
-    console.log(fruit);
-}
-</code></pre>]]></content>
+</code></pre><h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> fruit <span class="keyword">of</span> arr)&#123;</span><br><span class="line">       <span class="keyword">if</span>(fruit == <span class="string">'pear'</span>) <span class="keyword">continue</span>;</span><br><span class="line">       <span class="built_in">console</span>.log(fruit);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       
         <categories>
             
             <category> 前端 </category>
+            
+            <category> Js </category>
             
             <category> es6 </category>
             
@@ -302,7 +484,7 @@ const [a,b] = [b,a];
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
@@ -311,7 +493,7 @@ const [a,b] = [b,a];
             
             <category> 前端 </category>
             
-            <category> js </category>
+            <category> Js </category>
             
         </categories>
         
