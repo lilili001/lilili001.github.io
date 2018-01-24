@@ -156,6 +156,133 @@ const str = `My name is ${name} My age is ${age*5};`
  `;
 
  document.body.innerHTML = template;
+</code></pre><h2 id="模版标签"><a href="#模版标签" class="headerlink" title="模版标签"></a>模版标签</h2><pre><code>const name = &apos;alice&apos;;
+const age = 15;
+// ... 为剩余参数 等价于 arg2,arg3 ......
+function hightLight(strings,...values){
+    //注意 如果hightLight是以变量作为开头或结尾的话 strings 就有三个项  头尾为 &quot;&quot;  可对比template 和 template1
+   //debugger;//查看console 中的 scope &gt; locale
+
+    //values :[name,age]
+
+    //hilighted 结果是一个数组 [&quot;&lt;span class=&quot;hightlight&quot;&gt;alice&lt;/span&gt;&quot;, &quot;&lt;span class=&quot;hightlight&quot;&gt;15&lt;/span&gt;&quot;]
+    const hilighted = values.map(value=&gt;`&lt;span class=&quot;hightlight&quot;&gt;${value}&lt;/span&gt;`);
+    let str = &quot;&quot;;
+    //strings [&quot;&quot; , &quot;has become to age of&quot; ,&quot;&quot;]
+
+
+    //字符串累加方法一：
+    /*
+    strings.forEach(function (string,i) {
+        // &quot;&quot; alice
+        // has Become to age of 15
+        // &quot;&quot; undefined
+        str+=`${string}${hilighted[i] || &apos;&apos; }`
+    });
+    return str;
+    */
+
+    //字符串累加方法二： 还可以用arr.reduce方法 不用foreach
+   return strings.reduce((prev,curr,i)=&gt;  `${prev}${curr}${hilighted[i]|| &apos;&apos;}`,&apos;&apos;);
+
+}
+//这一句其实是 hightLight函数的调用 有三个参数 string name age
+const template = hightLight`Jelley ${name} has become to age of ${age}`;
+document.body.innerHTML = template;
+//const template1 = hightLight`Alice ${name} has become to age of ${age}.`;
+</code></pre><p>参数：</p>
+<p><img src="/images/posts/WX20180124-101926@2x.png" alt="test-w100"> </p>
+<p>结果如下：</p>
+<p> <img src="/images/posts/WX20180124-101038@2x.png" alt="结果">   </p>
+<h2 id="模板字符串转义"><a href="#模板字符串转义" class="headerlink" title="模板字符串转义"></a>模板字符串转义</h2><p>限制非法字符,防止xss攻击 像在图片中插入 onload 事件等等</p>
+<p>cdn:cdnjs.com<br>purify.min.js 使用方法：DOMPurify.sanitize(string);</p>
+<pre><code>const form = document.querySelector(&apos;.add-comment&apos;);
+const textarea = document.querySelector(&apos;.comment-text&apos;);
+const comment = document.querySelector(&apos;.comment&apos;);
+
+function sanitize(strings,...values){
+   const dirty = strings.reduce((prev,curr,i) =&gt; `${prev}${curr} ${values[i] || &apos;&apos; } ` , &apos;&apos;);
+   return DOMPurify.sanitize(dirty);
+}
+
+form.addEventListener(&apos;submit&apos;,function(event){
+    event.preventDefault();
+    comment.innerHTML =sanitize
+        `
+        &lt;div class=&quot;header-inner&quot;&gt;Mary&lt;/div&gt;
+        &lt;div class=&quot;header-body&quot;&gt;${textarea.value}&lt;/div&gt;
+        `;
+});
+</code></pre><h2 id="模版函数"><a href="#模版函数" class="headerlink" title="模版函数"></a>模版函数</h2><p>note:大小写敏感</p>
+<p>string.startWith(string,index) //index string开始的位置<br>string.endWith(string,index) //indes string末位的位置<br>string.includes()<br>string.repeat()</p>
+<pre><code>const id = &quot;422126198012042523x&quot;;
+ const fan = &quot;I love fx&quot;;
+
+ id.startsWith(&apos;422&apos;);//true
+ id.startsWith(&apos;1980&apos;,6)//true 第二个参数为 从第6位开始的是不是1980
+
+ fan.startsWith(&apos;I&apos;);//true
+ fan.startsWith(&apos;i&apos;);//false
+
+ fan.endsWith(&apos;love&apos;,6);// 第二个参数index: love 在 fan中最后一位
+
+ &apos;ha&apos;.repeat(5);//hahahahaha
+const heading =    `${ &apos;=&apos;.repeat(5) } ${fan} ${ &apos;=&apos;.repeat(5) } `;//&quot;===== I love fx ===== &quot;
+</code></pre><h1 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h1><p>使用es6的方法将对象的属性解构出来,就不用每次都 const name = Tom.name这样来获取</p>
+<pre><code>const Tom = {
+    name:&quot;Tom Jones&quot;,
+    age:12,
+    family:{
+        mother:&quot;Kate Jones&quot;,
+        father:&quot;Richard Jones&quot;,
+        brother:&quot;Howard Jones&quot;
+    }
+};
+const {name,age} = Tom;
+console.log(name);//Tom Jones
+console.log(age);//12
+
+//如果想提前声明name 可这样
+let name = &quot;&quot;;
+({name,age} = Tom);
+
+//变量重命名 和 默认值
+const father = &quot;Dad&quot;;
+const{ father:f,mother,brother , sister=&apos;no sister as default value&apos; } = Tom.family;// 将变量father 重命名为 f
+console.log(f,mother,brother);
+
+
+//eg
+function appendChildDiv(options={}){
+    const {width=&apos;100px&apos;,height=&apos;100px&apos;,background=&apos;red&apos;,parent=&apos;body&apos;} = options;
+    const div = document.createElement(&apos;div&apos;);
+    div.style.width = width;
+    div.style.height = height;
+    div.style.backgroundColor = background;
+    document.querySelector(parent).appendChild(div);
+}
+appendChildDiv({
+    width:&apos;200px&apos;
+})
+</code></pre><h1 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h1><pre><code>const arr = [&apos;one&apos;,&apos;two&apos;,&apos;three&apos;];
+const [one,two,three,category=&apos;php&apos;] = arr; //默认值必须是当变量为undefined的时候才有用
+
+console.log(one,two);
+
+//如果想要 three
+const [one,,three] = arr;
+
+//注意 rest参数必须为数组的最后一项
+const [one,...others] = arr;
+console.log(one, others );//one (2) [&quot;two&quot;, &quot;three&quot;]
+
+//交换变量 
+let a=1,b=2;
+const [a,b] = [b,a];
+</code></pre><h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><pre><code>for (let fruit of arr){
+    if(fruit == &apos;pear&apos;) continue;
+    console.log(fruit);
+}
 </code></pre>]]></content>
       
         <categories>
