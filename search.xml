@@ -190,11 +190,7 @@ function hightLight(strings,...values){
 const template = hightLight`Jelley ${name} has become to age of ${age}`;
 document.body.innerHTML = template;
 //const template1 = hightLight`Alice ${name} has become to age of ${age}.`;
-</code></pre><p>参数：</p>
-<p><img src="/images/posts/WX20180124-101926@2x.png" alt="test-w100"> </p>
-<p>结果如下：</p>
-<p> <img src="/images/posts/WX20180124-101038@2x.png" alt="结果">   </p>
-<h2 id="模板字符串转义"><a href="#模板字符串转义" class="headerlink" title="模板字符串转义"></a>模板字符串转义</h2><p>限制非法字符,防止xss攻击 像在图片中插入 onload 事件等等</p>
+</code></pre><h2 id="模板字符串转义"><a href="#模板字符串转义" class="headerlink" title="模板字符串转义"></a>模板字符串转义</h2><p>限制非法字符,防止xss攻击 像在图片中插入 onload 事件等等</p>
 <p>cdn:cdnjs.com<br>purify.min.js 使用方法：DOMPurify.sanitize(string);</p>
 <pre><code>const form = document.querySelector(&apos;.add-comment&apos;);
 const textarea = document.querySelector(&apos;.comment-text&apos;);
