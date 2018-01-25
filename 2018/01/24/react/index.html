@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="初探 import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;g">
+<meta name="description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
 <meta name="keywords" content="a,b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React">
 <meta property="og:url" content="https://lilili001.github.io/2018/01/24/react/index.html">
 <meta property="og:site_name" content="Mongey Web">
-<meta property="og:description" content="初探 import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;g">
+<meta property="og:description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-24T10:22:40.000Z">
+<meta property="og:updated_time" content="2018-01-25T08:42:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React">
-<meta name="twitter:description" content="初探 import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;g">
+<meta name="twitter:description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
 
 
 
@@ -377,9 +377,7 @@
       
 
       
-        <ul>
-<li><p>初探</p>
-<pre><code>import React from &quot;react&quot;;
+        <h1 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h1><pre><code>import React from &quot;react&quot;;
 import ReactDom from &quot;react-dom&quot;;
 class Layout extends React.Component{
     render(){
@@ -392,7 +390,7 @@ class Layout extends React.Component{
 
 const app = document.getElementById(&apos;app&apos;);
 ReactDom.render(&lt;Layout/&gt;,app);
-</code></pre></li>
+</code></pre><ul>
 <li><p>jsx 元素必须有一个包裹，如果这样就报错</p>
 <pre><code>render(){
      return (
@@ -523,10 +521,58 @@ render(){
               &lt;h1&gt;{this.props.title}&lt;/h1&gt;
          );
 
-}                
+}    
 </code></pre></li>
 </ul>
+<h1 id="react-事件"><a href="#react-事件" class="headerlink" title="react 事件"></a>react 事件</h1><ol>
+<li>Layout中创建事件函数，并将该事件作为属性传给Header</li>
+</ol>
+<pre><code>import React from &quot;react&quot;;
+import Header from &quot;./Header&quot;;
+import Footer from &quot;./Footer&quot;;
+export default class Layout extends React.Component{
+    constructor(){
+        super();
+        this.state = {title:&apos;alice&apos;};
+    } 
+    changeTitle(title){
+        this.setState({title})
+    } 
+    render(){
+        //setTimeout(()=&gt;this.setState({title:&apos;joe&apos;}),1000)
+         return (
+                  &lt;div&gt;
+                      &lt;Header changeTitle={this.changeTitle.bind(this)} title={this.state.title}/&gt;
+                      &lt;Footer/&gt;
+                  &lt;/div&gt;
+             );
 
+    }
+}
+</code></pre><p>2.Header 中定义触发函数 并通过this.props.changeTitle来触发事件</p>
+<pre><code>import React from &quot;react&quot;;
+import Title from &quot;./Header/Title&quot;;
+export default class Header extends React.Component{
+    handleChange(e){
+        const title = e.target.value;
+        this.props.changeTitle(title);
+    }
+    render(){
+         return (
+                 &lt;div&gt;
+                   &lt;Title title={this.props.title} /&gt;
+                   &lt;input value={this.props.title} onChange={this.handleChange.bind(this)}/&gt;
+                 &lt;/div&gt;
+             );
+
+    }
+}
+</code></pre><h1 id="router和单页应用"><a href="#router和单页应用" class="headerlink" title="router和单页应用"></a>router和单页应用</h1><pre><code>$ npm install -S react-router-dom
+$ npm install -S history
+</code></pre><h1 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h1><pre><code>const style={marginTop:&quot;10px&quot;}
+
+&lt;div style={style}&gt;&lt;/div&gt;
+</code></pre>
       
     </div>
     
@@ -622,8 +668,17 @@ render(){
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -649,7 +704,7 @@ render(){
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -679,16 +734,32 @@ render(){
           
 
           
-<div class="category-all-page" style="margin-left:40%;text-align:left">
+<div class="category-all-page" style="margin-left:30%;text-align:left">
 <h4>所有分类</h4>
                   
                   <div class="category-all">
-                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
                   </div>
                 </div>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">1.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">2.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">3.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">4.</span> <span class="nav-text">内联样式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

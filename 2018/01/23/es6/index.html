@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Mongey Web">
 <meta property="og:description" content="let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name # &amp;quot;alice&amp;quot;; } console.log(name) // nam is not defined name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念 区别： va">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-24T06:55:21.000Z">
+<meta property="og:updated_time" content="2018-01-25T03:53:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6">
 <meta name="twitter:description" content="let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name # &amp;quot;alice&amp;quot;; } console.log(name) // nam is not defined name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念 区别： va">
@@ -457,15 +457,16 @@ color#&quot;yellow&quot;;
 </code></pre><p>let 不是, 在变量未声明之前 变量处于暂时死区的状态</p>
 <pre><code>console.log(color);//uncaught ReferenceError: color is not defined
      let color # &quot;yellow&quot;;
-</code></pre><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><pre><code>const numbers # [1,2,3,4,5,6];
-const  double # numbers.map(function (number) {
+</code></pre><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><pre><code>const numbers = [1,2,3,4,5,6];
+const  double = numbers.map(function (number) {
     return number*2;
 });
 
-const double2 # numbers.map( (number,i) #&gt;{
+const double2 = numbers.map( (number,i) =&gt;{
     return `${i}:${number*2}`;
 });
-</code></pre><p>箭头符号 如果只有一个参数 () 可省略，如果有多个参数则必须要写（）</p>
+</code></pre><p>也可以这样写 不要return<br>    const double2 = numbers.map( (number,i) =&gt;<br>         <code>${i}:${number*2}</code>;<br>    );</p>
+<p>箭头符号 如果只有一个参数 () 可省略，如果有多个参数则必须要写（）</p>
 <h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 # numbers.map( (number,i) #&gt; `${i}:${number*2}`);
 </code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet # name #&gt; {alert(`hello ${name}`)};
    greet(&apos;jelley&apos;);
@@ -646,8 +647,121 @@ console.log(one, others );//one (2) [&quot;two&quot;, &quot;three&quot;]
 //交换变量 
 let a=1,b=2;
 const [a,b] = [b,a];
-</code></pre><h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> fruit <span class="keyword">of</span> arr)&#123;</span><br><span class="line">       <span class="keyword">if</span>(fruit == <span class="string">'pear'</span>) <span class="keyword">continue</span>;</span><br><span class="line">       <span class="built_in">console</span>.log(fruit);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="for-of"><a href="#for-of" class="headerlink" title="for of"></a>for of</h1><pre><code>const arr = [&apos;apple&apos;,&apos;pear&apos;,&apos;bananer&apos;,&apos;orange&apos;];
 
+    for (let fruit of arr){
+        if(fruit == &apos;pear&apos;) continue;
+        console.log(fruit);
+    }
+</code></pre><p>获取索引和值</p>
+<pre><code>for (let fruit of arr.entries()) {
+    //fruit:[0,&apos;apple&apos;]  [1,&apos;pear&apos;] ...
+     //key fruit[0]
+     //value fruit[1]
+} 
+</code></pre><p>解构写法</p>
+<pre><code>for (let [index,fruit] of arr.entries()) {
+     console.log(`${fruit} ranks ${index+1} in my favoriate fruites`);
+}
+</code></pre><p>dom操作</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;Go To School&lt;/li&gt;
+    &lt;li&gt;Watch Movie&lt;/li&gt;
+    &lt;li&gt;Go Home&lt;/li&gt;
+&lt;/ul&gt;
+
+const lists = document.querySelectorAll(&apos;li&apos;)
+    for ( let li of lists ) {
+        li.addEventListener(&apos;click&apos;,function(){
+            console.log(this.classList)
+            this.classList.toggle(&apos;completed&apos;)
+        })
+    }
+</code></pre><p>for of 还不支持对象 </p>
+<h1 id="数组相关"><a href="#数组相关" class="headerlink" title="数组相关"></a>数组相关</h1><h2 id="Array-from-Array-of"><a href="#Array-from-Array-of" class="headerlink" title="Array.from()  Array.of()"></a>Array.from()  Array.of()</h2><p>Array.from(kindArr,fn) 将类数组转为数组</p>
+<pre><code>const lis = document.querySelectorAll(&apos;li&apos;);
+
+ //将类数组转为数组
+ const lisArr = Array.from(lis);
+
+ //eg1:将类数组转为数组并map
+  const names = Array.from(lis,todo=&gt;todo.textContent);
+  console.log(names);//[&quot;Go to school&quot;, &quot;Watch Movie&quot;, &quot;Go Home&quot;]
+
+
+  //eg2:
+  function sum(){
+    //arguments 是个对象 Object
+    return Array.from(arguments).reduce( (prev,curr) =&gt; prev+curr,0 )
+  }
+
+  console.log( sum(1,2,3) )
+
+  //eg3:也适用于将字符串转为数组
+  const fxL = &quot;victorier&quot;;
+  console.log( Array.from(fxL) );//[&quot;v&quot;, &quot;i&quot;, &quot;c&quot;, &quot;t&quot;, &quot;o&quot;, &quot;r&quot;, &quot;i&quot;, &quot;e&quot;, &quot;r&quot;]
+</code></pre><h2 id="Array-of"><a href="#Array-of" class="headerlink" title="Array.of()"></a>Array.of()</h2><p>为解决new Array()参数不一样行为不一样的问题</p>
+<pre><code>new Array(7);//[empty × 7]
+
+new Array(2,3);// [2, 3]
+
+Array.of(1);//[1]
+
+Array.of(2,3);//[2,3]
+</code></pre><h2 id="find-fn"><a href="#find-fn" class="headerlink" title="find(fn)"></a>find(fn)</h2><p>返回查找的结果对象Object</p>
+<pre><code>const inventory = [
+    {name:&quot;apple&quot;,qty:0},
+    {name:&quot;pear&quot;,qty:5},
+    {name:&quot;bananer&quot;,qty:10}
+]
+const apple = inventory.find( fruit =&gt;{
+    return fruit.name == &apos;apple&apos;;
+});
+console.log(apple);//{name:&apos;apple&apos;,qty:10}
+</code></pre><h2 id="findIndex-fn"><a href="#findIndex-fn" class="headerlink" title="findIndex(fn)"></a>findIndex(fn)</h2><p>返回索引 用法同上<br>    const bananerIndex = inventory.findIndex( fruit =&gt; fruit.name == ‘bananer’ )</p>
+<h2 id="some-fn"><a href="#some-fn" class="headerlink" title="some(fn)"></a>some(fn)</h2><p>如果满足fn的条件则返回为true,并跳出<br>    const isEnough = inventory.some( fruit =&gt; fruit.qty &gt; 0 );</p>
+<h2 id="every-fn"><a href="#every-fn" class="headerlink" title="every(fn)"></a>every(fn)</h2><p>如果每条都满足则返回true<br>    const isAllEnough = inventory.every( fruit =&gt; fruit.qty &gt; 0 );</p>
+<h1 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h1><p>对函数参数处理</p>
+<pre><code>//获取函数的所有参数并存放在一个叫numbers的变量中 数组类型
+function sum(...numbers){
+    return numbers.reduce((prev,curr)=&gt;prev+curr,0)
+}
+sum(1,2,3);//6
+
+//将部分参数放数组里
+function convertCurrency(rate,...amounts){
+    console.log(rate,amount);
+    return amounts.map(amount =&gt; amount*rate);
+}
+convertCurrency(0.0012,23,34,45);//0.0012 [23, 34, 45]
+
+//用于变量的解构
+const player = [&apos;polyna&apos;,&apos;#2343453&apos;,5.3,3.4,3.4,2.3];
+const [name,id,...score] = player;
+console.log(score);//[5.3, 3.4, 3.4, 2.3]
+</code></pre><h1 id="扩展运算符-…"><a href="#扩展运算符-…" class="headerlink" title="扩展运算符 …"></a>扩展运算符 …</h1><p>与剩余参数相反, 把可遍历对象的每个元素扩展为一个参数序列</p>
+<p>字符串(可遍历对象)    </p>
+<pre><code>[...&apos;fx&apos;] //[&quot;f&quot;, &quot;x&quot;]
+</code></pre><p>数组(对于数组合并之类的很好用)</p>
+<pre><code>const yongers = [&apos;alice&apos;,&apos;polyna&apos;,&apos;joe&apos;];
+const olders = [&apos;frank&apos;,&apos;marry&apos;,&apos;kate&apos;];
+const members = [...yongers,...olders,&apos;dan&apos;];
+//[&quot;alice&quot;, &quot;polyna&quot;, &quot;joe&quot;, &quot;frank&quot;, &quot;marry&quot;, &quot;kate&quot;, &quot;dan&quot;]
+</code></pre><p>变量的赋值 对象的引用的处理,原来我们可以这样做：</p>
+<pre><code>const newMembers = [].concat(members); //这样改变 newMembers[0] = &apos;suri&apos; 就不会影响members
+
+//现在我们可以这样做：
+
+const newMembers = [...members];       
+</code></pre><p>函数参数</p>
+<pre><code>const fx = [&apos;vic&apos;,&apos;suri&apos;,&apos;krystal&apos;];
+const fxLater = [&apos;ember&apos;,&apos;luna&apos;];
+fx.push(...fxLater);  //[&apos;vic&apos;,&apos;suri&apos;,&apos;krystal&apos;,&apos;ember&apos;,&apos;luna&apos;]
+
+//eg date
+const dateFields = [2018,1,24];
+const date = new Date(...dateFields);//将数组扩展为函数的参数
+</code></pre>
       
     </div>
     
@@ -771,7 +885,7 @@ const [a,b] = [b,a];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -801,11 +915,11 @@ const [a,b] = [b,a];
           
 
           
-<div class="category-all-page" style="margin-left:40%;text-align:left">
+<div class="category-all-page" style="margin-left:30%;text-align:left">
 <h4>所有分类</h4>
                   
                   <div class="category-all">
-                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul>
+                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
                   </div>
                 </div>
         </div>
@@ -821,7 +935,7 @@ const [a,b] = [b,a];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">1.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">1.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">1.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">1.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">2.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">2.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">2.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">2.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">2.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">2.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">3.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">3.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">3.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">3.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">4.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">5.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">6.</span> <span class="nav-text">for of</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">1.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">1.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">1.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">1.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">2.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">2.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">2.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">2.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">2.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">2.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">3.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">3.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">3.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">3.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">4.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">5.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">6.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">7.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">7.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">7.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">7.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">7.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">7.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">7.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">8.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">9.</span> <span class="nav-text">扩展运算符 …</span></a></li></ol></div>
             
 
           </div>
