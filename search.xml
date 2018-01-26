@@ -22,13 +22,15 @@
     </entry>
     
     <entry>
-      <title><![CDATA[webpack初探]]></title>
+      <title><![CDATA[webpack]]></title>
       <url>/2018/01/24/webpack/</url>
-      <content type="html"><![CDATA[<h1 id="webpack-初探"><a href="#webpack-初探" class="headerlink" title="webpack 初探"></a>webpack 初探</h1><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><pre><code> $ npm init
+      <content type="html"><![CDATA[<h1 id="webpack-初探"><a href="#webpack-初探" class="headerlink" title="webpack 初探"></a>webpack 初探</h1><p><a href="webpack官网">webpack.github.io</a></p>
+<h2 id="basic"><a href="#basic" class="headerlink" title="basic"></a>basic</h2><pre><code> $ npm init
 $ npm install -S webpack 
 $ npm install -g webpack
-$ touch webpack.config.js
-</code></pre><h3 id="webpack-config-js-配置"><a href="#webpack-config-js-配置" class="headerlink" title="webpack.config.js 配置"></a>webpack.config.js 配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debug = process.env.NODE_ENV !== <span class="string">"production"</span>;</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    context: __dirname,<span class="comment">//项目的绝对路径 下面的配置以这个为基础</span></span><br><span class="line">    devtool: debug ? <span class="string">"inline-sourcemap"</span> : <span class="literal">false</span>,</span><br><span class="line">    entry: <span class="string">"./js/script.js"</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">"/js"</span>,</span><br><span class="line">        filename: <span class="string">"script.min.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: debug ? [] : [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.DedupePlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.OccurrenceOrderPlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123; <span class="attr">mangle</span>: <span class="literal">false</span>, <span class="attr">sourcemap</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</code></pre><p>webpack 打包文件 <code>webpack entry.js output.js</code> 将 entry.js打包为 output.js</p>
+<pre><code>$ touch webpack.config.js
+</code></pre><h3 id="webpack-config-js-配置"><a href="#webpack-config-js-配置" class="headerlink" title="webpack.config.js 配置"></a>webpack.config.js 配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debug = process.env.NODE_ENV !== <span class="string">"production"</span>;</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    context: __dirname,<span class="comment">//项目的绝对路径 下面的配置以这个为基础</span></span><br><span class="line">    devtool: debug ? <span class="string">"inline-sourcemap"</span> : <span class="literal">false</span>,<span class="comment">//声明文件路径是哪个指向哪个的</span></span><br><span class="line">    entry: <span class="string">"./js/script.js"</span>,<span class="comment">//</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">"/js"</span>,</span><br><span class="line">        filename: <span class="string">"script.min.js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: debug ? [] : [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.DedupePlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.OccurrenceOrderPlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123; <span class="attr">mangle</span>: <span class="literal">false</span>, <span class="attr">sourcemap</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="文件-js-script-js-引用-src-module1-js-src-module2-js"><a href="#文件-js-script-js-引用-src-module1-js-src-module2-js" class="headerlink" title="文件 js/script.js 引用 src/module1.js  src/module2.js"></a>文件 js/script.js 引用 src/module1.js  src/module2.js</h3><p>script.js<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">require</span>(<span class="params">'../src/module1.js'</span>)</span>;</span><br><span class="line"><span class="function"><span class="title">require</span>(<span class="params">'../src/module2.js'</span>)</span>;</span><br></pre></td></tr></table></figure></p>
 <p>module1.js<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>('module1')</span><br></pre></td></tr></table></figure></p>
 <p>module2.js<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>('module2')</span><br></pre></td></tr></table></figure></p>
@@ -40,8 +42,7 @@ $ touch webpack.config.js
 //设置运行目录 以及端口
 $ webpack-dev-server --content-base src --port=3000
 </code></pre><p>此时就可以在浏览器访问　localhost:3000 </p>
-<p>实时update:</p>
-<ul>
+<h2 id="实时update"><a href="#实时update" class="headerlink" title="实时update"></a>实时update</h2><ul>
 <li><p>通过浏览器url</p>
 <pre><code>http://localhost:3000/webpack-dev-server/index.html
 </code></pre></li>
@@ -53,8 +54,144 @@ $ webpack-dev-server --content-base src --port=3000
 <p>将这句命令 <code>$ webpack-dev-server --content-base src --port=3000 --inline --hot</code><br>拷到package.json中就可以直接用 <code>npm run dev</code>来实现及时热加载了</p>
 <p>前提是全局安装了　wepack-dev-server <code>$ npm install -g webpack-dev-server</code><br>但是我们可以不用全局安装 可以直接使用node_modules中的来实现</p>
 <p>package.json:<br><code>&quot;dev&quot;:&quot;./node_modules/.bin/webpack-dev-server --content-base src --port=3000 --inline --hot&quot;</code></p>
-<h1 id="有用的命令"><a href="#有用的命令" class="headerlink" title="有用的命令"></a>有用的命令</h1><pre><code>$ webpack --watch
-</code></pre>]]></content>
+<h2 id="dev-server的配置"><a href="#dev-server的配置" class="headerlink" title="dev-server的配置"></a>dev-server的配置</h2><table>
+<thead>
+<tr>
+<th>devserver的配置选项</th>
+<th style="text-align:right">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contentBase</td>
+<td style="text-align:right">默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录（本例设置到“public”目录）,个人认为是 html所在目录</td>
+</tr>
+<tr>
+<td>port</td>
+<td style="text-align:right">设置默认监听端口，如果省略，默认为”8080“</td>
+</tr>
+<tr>
+<td>inline</td>
+<td style="text-align:right">设置为true，当源文件改变时会自动刷新页面</td>
+</tr>
+<tr>
+<td>historyApiFallback</td>
+<td style="text-align:right">在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html</td>
+</tr>
+</tbody>
+</table>
+<p>把这些命令加到webpack的配置文件中，现在的配置文件webpack.config.js如下所示</p>
+<pre><code>module.exports = {
+  devtool: &apos;eval-source-map&apos;,
+
+  entry:  __dirname + &quot;/app/main.js&quot;,
+  output: {
+    path: __dirname + &quot;/public&quot;,
+    filename: &quot;bundle.js&quot;
+  },
+
+  devServer: {
+    contentBase: &quot;./public&quot;,//本地服务器所加载的页面所在的目录
+    historyApiFallback: true,//不跳转
+    inline: true//实时刷新
+  } 
+}
+</code></pre><h1 id="有用的命令"><a href="#有用的命令" class="headerlink" title="有用的命令"></a>有用的命令</h1><pre><code>$ webpack --watch
+$ webpack --display-modules //查看在使用的模块 
+$ webpack --display-modules --display-reasons
+$ webpack -p //压缩
+</code></pre><h1 id="webpack-loader"><a href="#webpack-loader" class="headerlink" title="webpack loader"></a>webpack loader</h1><p>webpack中使用不同的loader来处理不同的静态文件 需要在配置文件中配置</p>
+<h2 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h2><p>step1: 将所需要的loader 下载下来</p>
+<pre><code>npm install -S css-loader style-loader
+</code></pre><p>step2: 配置文件中配置loader</p>
+<pre><code>module:{
+    rules:[
+        {
+            test: /\.css$/,//如果文件后缀匹配到css的话
+            use:[
+                &apos;style-loader&apos;,&apos;css-loader&apos;
+            ]//就用style和css loader来处理
+        },
+    ]
+},
+</code></pre><p>step3: 模块中引用相关文件</p>
+<pre><code>//import &apos;../css/style.css&apos;;
+require( &apos;../css/style.css&apos; )
+</code></pre><p>然后 webpack 就很愉快的在浏览器看到 背景色变了</p>
+<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p>step1: 下载相关loader</p>
+<pre><code>npm install css-loader style-loader babel-core babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0 babel-runtime --save-dev
+</code></pre><p>step2: 配置</p>
+<pre><code>{
+    test: /\.js$/,
+    loader:&apos;babel-loader&apos;,
+    exclude:/node_modules/, 
+    options:{
+        presets: [&apos;es2015&apos;,&apos;stage-0&apos;],
+        plugins: [&apos;transform-runtime&apos;]
+    }
+}    
+</code></pre><p>然后就可以在模块中使用es6语法了</p>
+<p>参考文档：<a href="资料">https://www.codecasts.com/blog/post/webpack-tutorial-resources</a></p>
+<p>babel的options可在webpack.config.js 中配置 也可以在 .babelrc 中配置</p>
+<pre><code>//.babelrc
+{
+  &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;]
+}
+</code></pre><h1 id="vue配置相关"><a href="#vue配置相关" class="headerlink" title="vue配置相关"></a>vue配置相关</h1><p>step1:<br>    npm install vue vue-loader vue-html-loader vue-style-loader –save-dev </p>
+<p>step2: 配置vue loader</p>
+<pre><code>module:{
+    rules:[
+        {
+            test: /\.css$/,//如果文件后缀匹配到css的话
+            use:[
+                &apos;style-loader&apos;,&apos;css-loader&apos;
+            ]//就用style和css loader来处理
+        },
+        {
+            test: /\.js$/,
+            loader:&apos;babel-loader&apos;,
+            exclude:/node_modules/, 
+            options:{
+                presets: [&apos;es2015&apos;,&apos;stage-0&apos;],
+                plugins: [&apos;transform-runtime&apos;]
+            }
+        },
+        {
+            test:/\.vue$/,
+            loader:&apos;vue-loader&apos;
+        }
+    ]
+},
+resolve: {
+  alias: {
+    vue: &apos;vue/dist/vue.js&apos;
+  }
+},
+</code></pre><p>step3: 入口文件引入vue</p>
+<pre><code>require(&apos;./module1.js&apos;);
+require(&apos;./module2.js&apos;);
+
+//import &apos;../css/style.css&apos;;
+require( &apos;../css/style.css&apos; );
+import Vue from &apos;vue&apos;;
+import Heading from &apos;./components/header.vue&apos;;
+
+new Vue({
+    el:&apos;#app&apos;,
+    render:h =&gt; h(Heading)
+})
+</code></pre><h2 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h2><pre><code>entry:{index1: &apos;./script.js&apos;, index2: &apos;./entry2.js&apos;}, 
+output : {
+    publicPath: &apos;/src&apos;,//添加静态资源, 否则会出现路径错误
+    path: __dirname + &quot;/src&quot;,
+    filename : &apos;[name]-[hash].js&apos;,//这样就可以生成两个js文件, 名字分别为index1.js, 和index2.js
+},
+</code></pre><p>运行后会生成 index1-xxxx.js  index2-xxxx.js<br>js 访问路径 /src/index2-e82678a218e34380ef56.js</p>
+<h1 id="webpack-插件"><a href="#webpack-插件" class="headerlink" title="webpack 插件"></a>webpack 插件</h1><h2 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h2><p>自动生成html文件 并将所需要的js引入</p>
+<pre><code>npm install --save-dev html-webpack-plugin
+</code></pre><h1 id="有用的工具"><a href="#有用的工具" class="headerlink" title="有用的工具"></a>有用的工具</h1><p><a href="分析工具">webpack.github.io/analyse</a><br>step1:生成json文件：<br>    webpack –profile –json &gt; stats.json<br>step2: 通过分析工具来分析项目的引用关系    </p>
+<p><a href="webpack visualize">http://chrisbateman.github.io/webpack-visualizer/</a></p>
+]]></content>
       
         <categories>
             
@@ -293,62 +430,63 @@ $ npm install -S history
     <entry>
       <title><![CDATA[es6]]></title>
       <url>/2018/01/23/es6/</url>
-      <content type="html"><![CDATA[<h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
+      <content type="html"><![CDATA[<h1 id="demos"><a href="#demos" class="headerlink" title="demos"></a>demos</h1><p>demos for es6 study, more information referred to <a href="https://github.com/lilili001/es6-demos" target="_blank" rel="noopener">https://github.com/lilili001/es6-demos</a></p>
+<h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
 <pre><code>if(true){
-    let name # &quot;alice&quot;;
+    let name = &quot;alice&quot;;
 }
 console.log(name) // nam is not defined
 </code></pre><p>name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念</p>
 <h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h2><ul>
 <li>var 可以在全局中重复声明 这样的结果是会覆盖别人写的变量</li>
 <li><p>let 和 const 不能在同一个作用域中重复声明变量</p>
-<pre><code>let name # &quot;alice&quot;;
-let name # &quot;joe&quot;;
+<pre><code>let name = &quot;alice&quot;;
+let name = &quot;joe&quot;;
 console.log(name); //Identifier &apos;name&apos; has already been declared
 </code></pre></li>
 </ul>
 <pre><code>//不同作用域 虽然变量命一样 但是值不一样 
 //以下代码 如果在 console中打印 name的值是 joe,因为是全局的
-let name # &quot;joe&quot;;
+let name = &quot;joe&quot;;
 console.log(name);  //joe
 if(true){
-   let name # &quot;melody&quot;;
+   let name = &quot;melody&quot;;
    console.log(name)//melody
 }
 </code></pre><ul>
 <li><p>let 可以重新赋值， 但是const不可以</p>
-<pre><code>let name # &quot;alice&quot;;
-    name # &quot;sdf&quot;;  //不报错
+<pre><code>let name = &quot;alice&quot;;
+    name=&quot;sdf&quot;;  //不报错
 
 const age# &quot;AGE&quot;;
-     age # &quot;arg&quot;;// 报错 Assignment to constant variable.
+     age = &quot;arg&quot;;// 报错 Assignment to constant variable.
 </code></pre></li>
 <li><p>const 属性可以赋值</p>
-<pre><code>const person # {
+<pre><code>const person = {
      name:&apos;alice&apos;,
      age:12
   }
 
-person.age # 13;//可以这样赋值 但是不可以整个person # {}这样赋值, 这样就改变了变量的指针 如果连属性都不让赋值可以这样
+person.age = 13;//可以这样赋值 但是不可以整个person = {}这样赋值, 这样就改变了变量的指针 如果连属性都不让赋值可以这样
 
-const jelley # Object.freeze(person);
+const jelley = Object.freeze(person);
 </code></pre></li>
 </ul>
 <h2 id="let-和-const-私有化"><a href="#let-和-const-私有化" class="headerlink" title="let 和 const 私有化"></a>let 和 const 私有化</h2><p>如果直接写全局变量，不管是 var,let,const 都会覆盖 window的全局变量 , 我们可以使用闭包使变量私有化，也可以使用{} 来实现：</p>
 <pre><code>(function(){
-        let name # &quot;alice&quot;;
+        let name = &quot;alice&quot;;
         console.log(name)
 })();
 
 
 {
-        const name # &quot;joe&quot;;
+        const name = &quot;joe&quot;;
         console.log(name)// joe
  }
  console.log(name)// &quot;&quot;
 </code></pre><p>应用场景：</p>
 <pre><code>//应用场景 for循环
-for( var i # 0;i&lt;10;i++ ){
+for( var i = 0;i&lt;10;i++ ){
     console.log(i);// 0,1,2,.....10
     setTimeout(function(){
         console.log(`i:${i}`)//10
@@ -356,7 +494,7 @@ for( var i # 0;i&lt;10;i++ ){
 }
 console.log(&apos;#########&apos;)
 
-for( let i # 0;i&lt;10;i++ ){
+for( let i = 0;i&lt;10;i++ ){
     console.log(i);// 0,1,2,.....10
     setTimeout(function(){
         console.log(`i:${i}`)//0,1,2,.....10
@@ -364,7 +502,7 @@ for( let i # 0;i&lt;10;i++ ){
 }
 </code></pre><h2 id="临时性死区"><a href="#临时性死区" class="headerlink" title="临时性死区"></a>临时性死区</h2><p>var 中的变量提升：</p>
 <pre><code>console.log(color);//undefined
-     var color # &quot;yellow&quot;;
+     var color = &quot;yellow&quot;;
 
 //这个结果实际是 
 
@@ -373,7 +511,7 @@ console.log(&apos;color&apos;);
 color#&quot;yellow&quot;;
 </code></pre><p>let 不是, 在变量未声明之前 变量处于暂时死区的状态</p>
 <pre><code>console.log(color);//uncaught ReferenceError: color is not defined
-     let color # &quot;yellow&quot;;
+     let color = &quot;yellow&quot;;
 </code></pre><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><pre><code>const numbers = [1,2,3,4,5,6];
 const  double = numbers.map(function (number) {
     return number*2;
@@ -384,10 +522,10 @@ const double2 = numbers.map( (number,i) =&gt;{
 });
 </code></pre><p>也可以这样写 不要return<br>    const double2 = numbers.map( (number,i) =&gt;<br>         <code>${i}:${number*2}</code>;<br>    );</p>
 <p>箭头符号 如果只有一个参数 () 可省略，如果有多个参数则必须要写（）</p>
-<h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 # numbers.map( (number,i) #&gt; `${i}:${number*2}`);
-</code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet # name #&gt; {alert(`hello ${name}`)};
+<h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 = numbers.map( (number,i) #&gt; `${i}:${number*2}`);
+</code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet = name #&gt; {alert(`hello ${name}`)};
    greet(&apos;jelley&apos;);
-</code></pre><h2 id="箭头函数-this"><a href="#箭头函数-this" class="headerlink" title="箭头函数 this"></a>箭头函数 this</h2><pre><code>const Alice # {
+</code></pre><h2 id="箭头函数-this"><a href="#箭头函数-this" class="headerlink" title="箭头函数 this"></a>箭头函数 this</h2><pre><code>const Alice = {
         name:&apos;Alice&apos;,
         hobbies:[&apos;Coding&apos;,&apos;Sleeping&apos;,&apos;Reading&apos;],
         printHobbies:function(){
@@ -398,8 +536,8 @@ const double2 = numbers.map( (number,i) =&gt;{
     };
   Alice.printHobbies();
 </code></pre><h2 id="函数默认值"><a href="#函数默认值" class="headerlink" title="函数默认值"></a>函数默认值</h2><pre><code>function multiply(a,b){
-         a # a || 5;
-         b # b || 3;
+         a = a || 5;
+         b = b || 3;
          return a*b;
      }
 
@@ -678,6 +816,137 @@ fx.push(...fxLater);  //[&apos;vic&apos;,&apos;suri&apos;,&apos;krystal&apos;,&a
 //eg date
 const dateFields = [2018,1,24];
 const date = new Date(...dateFields);//将数组扩展为函数的参数
+</code></pre><h1 id="对象字面亮的扩展"><a href="#对象字面亮的扩展" class="headerlink" title="对象字面亮的扩展"></a>对象字面亮的扩展</h1><p>对象的属性名和变量名一样的时候 只写一个就可以了</p>
+<pre><code>//eg1:
+const name = &quot;alice&quot;;
+const age = 12;
+const Person = {
+    name,
+    age
+}
+
+//eg2:
+module.exports = {
+    getName,
+    getAge
+}
+</code></pre><p>对象的方法也可以简写,省去function关键字</p>
+<pre><code>const Person = {
+    name,
+    age,
+    getName(){
+
+    }
+}
+</code></pre><p>计算属性</p>
+<pre><code>let id = 0;
+const userIds = {
+    [`user-${++id}`] : id,
+    [`user-${++id}`] : id,
+    [`user-${++id}`] : id
+}
+
+//{user-1:1,user-2:2,user-3:3}
+</code></pre><h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>当多个ajax同时执行的时候,无法预知哪个ajax先返回,哪个后返回 返回的顺序是不定的</p>
+<p>promise相当于一个承诺,代表一定会给你一个反馈,promise 可返回promise</p>
+<pre><code>let username;
+
+ const userPromise = axios.get(&apos;https://api.github.com/users&apos;);
+
+ userPromise
+    .then( response =&gt; {
+        username = response.data[0].login;
+        //返回promise
+        return axios.get(`https://api.github.com/users/${username}/repos`);
+    })
+    //第二个promise的返回
+    .then(response=&gt;{
+        console.log(response.data);
+    })
+    .catch(err =&gt; {
+        console.log(err);
+    })
+</code></pre><p>自己编写promise,promise可用于异步</p>
+<p>resolve 处理成功的返回,reject 处理失败的返回,catch 捕获error</p>
+<pre><code>const p = new Promise( (resolve,reject) =&gt;{
+
+    //resolve(&apos;polyna is awesome!&apos;);
+    //reject(&apos;alice is not awesome&apos;);
+
+    setTimeout(()=&gt;{
+        //reject(&apos;alice is not awesome!&apos;);
+        reject( Error(&apos;alice is not awesome!&apos;) )
+    },2000);
+
+}); 
+
+p.then( data =&gt; { console.log(data) } )
+.catch(err=&gt;{console.error(err)})
+</code></pre><p>promise 应用实例</p>
+<pre><code>const repos = [
+    { id:1,name:&apos;grit&apos;,owner:&apos;mojombo&apos; },
+    { id:2,name:&apos;jsawesome&apos;,owner:&apos;vanpelt&apos; },
+    { id:3,name:&apos;merb-core&apos;,owner:&apos;wycats&apos; },
+ ];
+ const owners = [
+    {name:&apos;mojombo&apos;,location:&apos;San Fransisco&apos;},
+    {name:&apos;vanpelt&apos;,location:&apos;Bay Minette&apos;},
+    {name:&apos;wycats&apos;,location:&apos;Los Angeles CA&apos;}
+ ]
+
+ function getRepoById(id){
+    return new Promise( (resolve,reject)=&gt;{
+        const repo = repos.find( repo =&gt; repo.id === id );
+        repo ? resolve(repo) : reject(Error(&apos;No repo found&apos;));
+    });
+ }
+
+ function comboundOwner(repo){
+    return new Promise((resolve,reject)=&gt;{
+        const owner = owners.find( owner =&gt; owner.name === repo.owner );
+        if(owner){
+            repo.owner = owner;
+            resolve(repo);
+        }else{
+            reject(Error(&apos;can not found the owner&apos;))
+        }
+    })
+ }
+
+ //得到repo后 返回 new Promise ( comboundOwner )
+ getRepoById(1)
+    .then(
+        repo =&gt; {
+            //console.log(repo);//{id: 1, name: &quot;grit&quot;, owner: &quot;mojombo&quot;}
+            return comboundOwner(repo);//返回promise repo
+        }
+    )
+    .then(repo=&gt;{
+        console.log(repo)
+     })
+    .catch(err=&gt;{
+        console.log(err);//{id: 1, name: &quot;grit&quot;, owner: {…}}
+     })
+</code></pre><p>多个promise</p>
+<p>Promise.all() 当所有的promise都执行成功才执行then里的内容<br>Promise.race() 针对的是第一个promise返回的状态,跟代码的顺序没关系，跟返回执行的时间有关系,比如下面的 userPromise是1s后返回, moviePromise是立马返回 那么Promise.race的返回结果就是moviePromise的返回结果</p>
+<pre><code>const userPromise = new Promise((resolve,reject)=&gt;{
+    setTimeout(()=&gt;{
+        resolve([&apos;alice&apos;,&apos;luna&apos;,&apos;suri&apos;]);
+    },1000)
+
+})
+const moviePromise = new Promise((resolve,reject)=&gt;{
+    reject(Error(&apos;No movie&apos;));
+})    
+
+Promise
+    .all([promiseList]) 
+    .then(res=&gt;{
+        console.log(res)
+     }) 
+     .catch(err=&gt;{
+        console.log(err)
+        })       
 </code></pre>]]></content>
       
         <categories>

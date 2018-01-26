@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name # &amp;quot;alice&amp;quot;; } console.log(name) // nam is not defined name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念 区别： va">
+<meta name="description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6">
 <meta property="og:url" content="https://lilili001.github.io/2018/01/23/es6/index.html">
 <meta property="og:site_name" content="Mongey Web">
-<meta property="og:description" content="let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name # &amp;quot;alice&amp;quot;; } console.log(name) // nam is not defined name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念 区别： va">
+<meta property="og:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-25T03:53:51.000Z">
+<meta property="og:updated_time" content="2018-01-26T04:12:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6">
-<meta name="twitter:description" content="let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name # &amp;quot;alice&amp;quot;; } console.log(name) // nam is not defined name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念 区别： va">
+<meta name="twitter:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
 
 
 
@@ -376,62 +376,63 @@
       
 
       
-        <h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
+        <h1 id="demos"><a href="#demos" class="headerlink" title="demos"></a>demos</h1><p>demos for es6 study, more information referred to <a href="https://github.com/lilili001/es6-demos" target="_blank" rel="noopener">https://github.com/lilili001/es6-demos</a></p>
+<h1 id="let-const"><a href="#let-const" class="headerlink" title="let , const"></a>let , const</h1><p>let,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的</p>
 <pre><code>if(true){
-    let name # &quot;alice&quot;;
+    let name = &quot;alice&quot;;
 }
 console.log(name) // nam is not defined
 </code></pre><p>name只是作用在{} 内,但是var 对{}而言是直接暴露在外面的,只是在函数内有作用域的概念</p>
 <h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h2><ul>
 <li>var 可以在全局中重复声明 这样的结果是会覆盖别人写的变量</li>
 <li><p>let 和 const 不能在同一个作用域中重复声明变量</p>
-<pre><code>let name # &quot;alice&quot;;
-let name # &quot;joe&quot;;
+<pre><code>let name = &quot;alice&quot;;
+let name = &quot;joe&quot;;
 console.log(name); //Identifier &apos;name&apos; has already been declared
 </code></pre></li>
 </ul>
 <pre><code>//不同作用域 虽然变量命一样 但是值不一样 
 //以下代码 如果在 console中打印 name的值是 joe,因为是全局的
-let name # &quot;joe&quot;;
+let name = &quot;joe&quot;;
 console.log(name);  //joe
 if(true){
-   let name # &quot;melody&quot;;
+   let name = &quot;melody&quot;;
    console.log(name)//melody
 }
 </code></pre><ul>
 <li><p>let 可以重新赋值， 但是const不可以</p>
-<pre><code>let name # &quot;alice&quot;;
-    name # &quot;sdf&quot;;  //不报错
+<pre><code>let name = &quot;alice&quot;;
+    name=&quot;sdf&quot;;  //不报错
 
 const age# &quot;AGE&quot;;
-     age # &quot;arg&quot;;// 报错 Assignment to constant variable.
+     age = &quot;arg&quot;;// 报错 Assignment to constant variable.
 </code></pre></li>
 <li><p>const 属性可以赋值</p>
-<pre><code>const person # {
+<pre><code>const person = {
      name:&apos;alice&apos;,
      age:12
   }
 
-person.age # 13;//可以这样赋值 但是不可以整个person # {}这样赋值, 这样就改变了变量的指针 如果连属性都不让赋值可以这样
+person.age = 13;//可以这样赋值 但是不可以整个person = {}这样赋值, 这样就改变了变量的指针 如果连属性都不让赋值可以这样
 
-const jelley # Object.freeze(person);
+const jelley = Object.freeze(person);
 </code></pre></li>
 </ul>
 <h2 id="let-和-const-私有化"><a href="#let-和-const-私有化" class="headerlink" title="let 和 const 私有化"></a>let 和 const 私有化</h2><p>如果直接写全局变量，不管是 var,let,const 都会覆盖 window的全局变量 , 我们可以使用闭包使变量私有化，也可以使用{} 来实现：</p>
 <pre><code>(function(){
-        let name # &quot;alice&quot;;
+        let name = &quot;alice&quot;;
         console.log(name)
 })();
 
 
 {
-        const name # &quot;joe&quot;;
+        const name = &quot;joe&quot;;
         console.log(name)// joe
  }
  console.log(name)// &quot;&quot;
 </code></pre><p>应用场景：</p>
 <pre><code>//应用场景 for循环
-for( var i # 0;i&lt;10;i++ ){
+for( var i = 0;i&lt;10;i++ ){
     console.log(i);// 0,1,2,.....10
     setTimeout(function(){
         console.log(`i:${i}`)//10
@@ -439,7 +440,7 @@ for( var i # 0;i&lt;10;i++ ){
 }
 console.log(&apos;#########&apos;)
 
-for( let i # 0;i&lt;10;i++ ){
+for( let i = 0;i&lt;10;i++ ){
     console.log(i);// 0,1,2,.....10
     setTimeout(function(){
         console.log(`i:${i}`)//0,1,2,.....10
@@ -447,7 +448,7 @@ for( let i # 0;i&lt;10;i++ ){
 }
 </code></pre><h2 id="临时性死区"><a href="#临时性死区" class="headerlink" title="临时性死区"></a>临时性死区</h2><p>var 中的变量提升：</p>
 <pre><code>console.log(color);//undefined
-     var color # &quot;yellow&quot;;
+     var color = &quot;yellow&quot;;
 
 //这个结果实际是 
 
@@ -456,7 +457,7 @@ console.log(&apos;color&apos;);
 color#&quot;yellow&quot;;
 </code></pre><p>let 不是, 在变量未声明之前 变量处于暂时死区的状态</p>
 <pre><code>console.log(color);//uncaught ReferenceError: color is not defined
-     let color # &quot;yellow&quot;;
+     let color = &quot;yellow&quot;;
 </code></pre><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><pre><code>const numbers = [1,2,3,4,5,6];
 const  double = numbers.map(function (number) {
     return number*2;
@@ -467,10 +468,10 @@ const double2 = numbers.map( (number,i) =&gt;{
 });
 </code></pre><p>也可以这样写 不要return<br>    const double2 = numbers.map( (number,i) =&gt;<br>         <code>${i}:${number*2}</code>;<br>    );</p>
 <p>箭头符号 如果只有一个参数 () 可省略，如果有多个参数则必须要写（）</p>
-<h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 # numbers.map( (number,i) #&gt; `${i}:${number*2}`);
-</code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet # name #&gt; {alert(`hello ${name}`)};
+<h2 id="隐式返回"><a href="#隐式返回" class="headerlink" title="隐式返回"></a>隐式返回</h2><pre><code>const double3 = numbers.map( (number,i) #&gt; `${i}:${number*2}`);
+</code></pre><h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><pre><code>const greet = name #&gt; {alert(`hello ${name}`)};
    greet(&apos;jelley&apos;);
-</code></pre><h2 id="箭头函数-this"><a href="#箭头函数-this" class="headerlink" title="箭头函数 this"></a>箭头函数 this</h2><pre><code>const Alice # {
+</code></pre><h2 id="箭头函数-this"><a href="#箭头函数-this" class="headerlink" title="箭头函数 this"></a>箭头函数 this</h2><pre><code>const Alice = {
         name:&apos;Alice&apos;,
         hobbies:[&apos;Coding&apos;,&apos;Sleeping&apos;,&apos;Reading&apos;],
         printHobbies:function(){
@@ -481,8 +482,8 @@ const double2 = numbers.map( (number,i) =&gt;{
     };
   Alice.printHobbies();
 </code></pre><h2 id="函数默认值"><a href="#函数默认值" class="headerlink" title="函数默认值"></a>函数默认值</h2><pre><code>function multiply(a,b){
-         a # a || 5;
-         b # b || 3;
+         a = a || 5;
+         b = b || 3;
          return a*b;
      }
 
@@ -761,6 +762,137 @@ fx.push(...fxLater);  //[&apos;vic&apos;,&apos;suri&apos;,&apos;krystal&apos;,&a
 //eg date
 const dateFields = [2018,1,24];
 const date = new Date(...dateFields);//将数组扩展为函数的参数
+</code></pre><h1 id="对象字面亮的扩展"><a href="#对象字面亮的扩展" class="headerlink" title="对象字面亮的扩展"></a>对象字面亮的扩展</h1><p>对象的属性名和变量名一样的时候 只写一个就可以了</p>
+<pre><code>//eg1:
+const name = &quot;alice&quot;;
+const age = 12;
+const Person = {
+    name,
+    age
+}
+
+//eg2:
+module.exports = {
+    getName,
+    getAge
+}
+</code></pre><p>对象的方法也可以简写,省去function关键字</p>
+<pre><code>const Person = {
+    name,
+    age,
+    getName(){
+
+    }
+}
+</code></pre><p>计算属性</p>
+<pre><code>let id = 0;
+const userIds = {
+    [`user-${++id}`] : id,
+    [`user-${++id}`] : id,
+    [`user-${++id}`] : id
+}
+
+//{user-1:1,user-2:2,user-3:3}
+</code></pre><h1 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h1><p>当多个ajax同时执行的时候,无法预知哪个ajax先返回,哪个后返回 返回的顺序是不定的</p>
+<p>promise相当于一个承诺,代表一定会给你一个反馈,promise 可返回promise</p>
+<pre><code>let username;
+
+ const userPromise = axios.get(&apos;https://api.github.com/users&apos;);
+
+ userPromise
+    .then( response =&gt; {
+        username = response.data[0].login;
+        //返回promise
+        return axios.get(`https://api.github.com/users/${username}/repos`);
+    })
+    //第二个promise的返回
+    .then(response=&gt;{
+        console.log(response.data);
+    })
+    .catch(err =&gt; {
+        console.log(err);
+    })
+</code></pre><p>自己编写promise,promise可用于异步</p>
+<p>resolve 处理成功的返回,reject 处理失败的返回,catch 捕获error</p>
+<pre><code>const p = new Promise( (resolve,reject) =&gt;{
+
+    //resolve(&apos;polyna is awesome!&apos;);
+    //reject(&apos;alice is not awesome&apos;);
+
+    setTimeout(()=&gt;{
+        //reject(&apos;alice is not awesome!&apos;);
+        reject( Error(&apos;alice is not awesome!&apos;) )
+    },2000);
+
+}); 
+
+p.then( data =&gt; { console.log(data) } )
+.catch(err=&gt;{console.error(err)})
+</code></pre><p>promise 应用实例</p>
+<pre><code>const repos = [
+    { id:1,name:&apos;grit&apos;,owner:&apos;mojombo&apos; },
+    { id:2,name:&apos;jsawesome&apos;,owner:&apos;vanpelt&apos; },
+    { id:3,name:&apos;merb-core&apos;,owner:&apos;wycats&apos; },
+ ];
+ const owners = [
+    {name:&apos;mojombo&apos;,location:&apos;San Fransisco&apos;},
+    {name:&apos;vanpelt&apos;,location:&apos;Bay Minette&apos;},
+    {name:&apos;wycats&apos;,location:&apos;Los Angeles CA&apos;}
+ ]
+
+ function getRepoById(id){
+    return new Promise( (resolve,reject)=&gt;{
+        const repo = repos.find( repo =&gt; repo.id === id );
+        repo ? resolve(repo) : reject(Error(&apos;No repo found&apos;));
+    });
+ }
+
+ function comboundOwner(repo){
+    return new Promise((resolve,reject)=&gt;{
+        const owner = owners.find( owner =&gt; owner.name === repo.owner );
+        if(owner){
+            repo.owner = owner;
+            resolve(repo);
+        }else{
+            reject(Error(&apos;can not found the owner&apos;))
+        }
+    })
+ }
+
+ //得到repo后 返回 new Promise ( comboundOwner )
+ getRepoById(1)
+    .then(
+        repo =&gt; {
+            //console.log(repo);//{id: 1, name: &quot;grit&quot;, owner: &quot;mojombo&quot;}
+            return comboundOwner(repo);//返回promise repo
+        }
+    )
+    .then(repo=&gt;{
+        console.log(repo)
+     })
+    .catch(err=&gt;{
+        console.log(err);//{id: 1, name: &quot;grit&quot;, owner: {…}}
+     })
+</code></pre><p>多个promise</p>
+<p>Promise.all() 当所有的promise都执行成功才执行then里的内容<br>Promise.race() 针对的是第一个promise返回的状态,跟代码的顺序没关系，跟返回执行的时间有关系,比如下面的 userPromise是1s后返回, moviePromise是立马返回 那么Promise.race的返回结果就是moviePromise的返回结果</p>
+<pre><code>const userPromise = new Promise((resolve,reject)=&gt;{
+    setTimeout(()=&gt;{
+        resolve([&apos;alice&apos;,&apos;luna&apos;,&apos;suri&apos;]);
+    },1000)
+
+})
+const moviePromise = new Promise((resolve,reject)=&gt;{
+    reject(Error(&apos;No movie&apos;));
+})    
+
+Promise
+    .all([promiseList]) 
+    .then(res=&gt;{
+        console.log(res)
+     }) 
+     .catch(err=&gt;{
+        console.log(err)
+        })       
 </code></pre>
       
     </div>
@@ -885,7 +1017,7 @@ const date = new Date(...dateFields);//将数组扩展为函数的参数
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -906,6 +1038,16 @@ const date = new Date(...dateFields);//将数组扩展为函数的参数
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/lilili001" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -935,7 +1077,7 @@ const date = new Date(...dateFields);//将数组扩展为函数的参数
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">1.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">1.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">1.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">1.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">2.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">2.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">2.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">2.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">2.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">2.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">3.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">3.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">3.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">3.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">4.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">5.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">6.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">7.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">7.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">7.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">7.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">7.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">7.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">7.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">8.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">9.</span> <span class="nav-text">扩展运算符 …</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demos"><span class="nav-number">1.</span> <span class="nav-text">demos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">2.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">2.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">2.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">2.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">3.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">3.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">3.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">4.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">4.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">4.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">4.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">5.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">6.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">7.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">8.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">8.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">8.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">8.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">8.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">8.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">8.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">9.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">10.</span> <span class="nav-text">扩展运算符 …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面亮的扩展"><span class="nav-number">11.</span> <span class="nav-text">对象字面亮的扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise"><span class="nav-number">12.</span> <span class="nav-text">promise</span></a></li></ol></div>
             
 
           </div>
