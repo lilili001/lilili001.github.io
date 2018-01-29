@@ -3,6 +3,45 @@
   
     
     <entry>
+      <title></title>
+      <url>/2018/01/29/node/</url>
+      <content type="html"><![CDATA[<hr>
+<p>title:nodejs</p>
+<h2 id="categories-前端-Js-nodejs"><a href="#categories-前端-Js-nodejs" class="headerlink" title="categories:[前端,Js,nodejs]"></a>categories:[前端,Js,nodejs]</h2><ol>
+<li>path.basename<br>提取出用 ‘/‘ 隔开的path的最后一部分</li>
+</ol>
+<p>path.basename(p, [ext]);</p>
+<pre><code>var path= require(&quot;path&quot;);
+path.basename(&apos;/foo/bar/baz/asdf/quux.html&apos;) 
+// returns 
+&apos;quux.html&apos; 
+
+path.basename(&apos;/foo/bar/baz/asdf/quux.html&apos;, &apos;.html&apos;) 
+// returns 
+&apos;quux&apos;
+
+var a = path.basename(&apos;/foo/bar/baz/asdf/&apos;, &apos;.html&apos;);
+// returns
+&apos;asdf&apos;
+</code></pre><ol>
+<li>node glob</li>
+</ol>
+<p>路径匹配文件</p>
+<pre><code>var glob = require(&quot;glob&quot;)
+
+// options is optional
+glob(&quot;./src/view/**/*.html&quot;, options, function (er, files) {
+  // files is an array of filenames.
+  // If the `nonull` option is set, and nothing
+  // was found, then files is [&quot;**/*.js&quot;]
+  // er is an error object or null.
+})    
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[npm]]></title>
       <url>/2018/01/24/npm/</url>
       <content type="html"><![CDATA[<ul>
@@ -191,6 +230,11 @@ output : {
 <pre><code>npm install --save-dev html-webpack-plugin
 </code></pre><h1 id="有用的工具"><a href="#有用的工具" class="headerlink" title="有用的工具"></a>有用的工具</h1><p><a href="分析工具">webpack.github.io/analyse</a><br>step1:生成json文件：<br>    webpack –profile –json &gt; stats.json<br>step2: 通过分析工具来分析项目的引用关系    </p>
 <p><a href="webpack visualize">http://chrisbateman.github.io/webpack-visualizer/</a></p>
+<h2 id="webpack-结合-vue-多入口文件"><a href="#webpack-结合-vue-多入口文件" class="headerlink" title="webpack 结合 vue 多入口文件"></a>webpack 结合 vue 多入口文件</h2><p>step1:<br>build/util.js</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">exports.getMultiEntry = <span class="function"><span class="params">(globPath)</span> =&gt;</span>&#123;</span><br><span class="line">  var entries = &#123;&#125;,basename,pathsrc;</span><br><span class="line">  glob.sync(globPath).forEach( <span class="function"><span class="params">(entry)</span>=&gt;</span>&#123;</span><br><span class="line">      var arr = entry.split(<span class="string">'/'</span>).slice(<span class="number">-4</span>);</span><br><span class="line">      basename = path.basename(entry,path.extname(entry));</span><br><span class="line">      pathsrc = arr[<span class="number">0</span>] + <span class="string">'/'</span> +arr[<span class="number">1</span>];</span><br><span class="line">      entries[pathsrc+<span class="string">'/'</span>+basename] = entry</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> entries;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>build/webpack.base.js<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var entries =  utils.getMultiEntry(<span class="string">'./src/'</span>+<span class="built_in">config</span>.moduleName+<span class="string">'/**/**/*.js'</span>);</span><br><span class="line">// console.<span class="built_in">log</span>(entries);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  context: <span class="built_in">path</span>.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  entry: entries,</span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    <span class="built_in">path</span>: <span class="built_in">config</span>.build.assetsRoot,</span><br><span class="line">    filename: <span class="string">'[name]-[hash].js'</span>,</span><br><span class="line">    publicPath: process.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line">      ? <span class="built_in">config</span>.build.assetsPublicPath</span><br><span class="line">      : <span class="built_in">config</span>.dev.assetsPublicPath</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>build/webpack.dev.js<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pages =  utils.getMultiEntry(<span class="string">'./src/'</span>+config.moduleName+<span class="string">'/**/**/*.html'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> pathname <span class="keyword">in</span> pages) &#123;</span><br><span class="line">          <span class="comment">// 配置生成的html文件，定义路径等</span></span><br><span class="line">          <span class="keyword">var</span> conf = &#123;</span><br><span class="line">              filename: pathname + <span class="string">'.html'</span>,</span><br><span class="line">              template: pages[pathname], <span class="comment">// 模板路径</span></span><br><span class="line">              chunks: [pathname, <span class="string">'vendors'</span>, <span class="string">'manifest'</span>], <span class="comment">// 每个html引用的js模块</span></span><br><span class="line">              inject: <span class="literal">true</span>              <span class="comment">// js插入位置</span></span><br><span class="line">          &#125;;</span><br><span class="line">          <span class="comment">// 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象</span></span><br><span class="line">          devWebpackConfig.plugins.push(<span class="keyword">new</span> HtmlWebpackPlugin(conf));</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<p> build/webpack.prod.js<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> entries =  utils.getMultiEntry(<span class="string">'./src/'</span>+config.moduleName+<span class="string">'/**/**/*.js'</span>); <span class="comment">// 获得入口js文件</span></span><br><span class="line"><span class="keyword">var</span> chunks = <span class="built_in">Object</span>.keys(entries);</span><br><span class="line">-----------------------------------------------</span><br><span class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'vendor'</span>,</span><br><span class="line">        chunks: chunks,</span><br><span class="line">      minChunks: <span class="literal">Infinity</span></span><br><span class="line">    &#125;),</span><br><span class="line">-----------------------------------------------    </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pages =  utils.getMultiEntry(<span class="string">'./src/'</span>+config.moduleName+<span class="string">'/**/**/*.html'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> pathname <span class="keyword">in</span> pages) &#123;</span><br><span class="line">    <span class="comment">// 配置生成的html文件，定义路径等</span></span><br><span class="line">    <span class="keyword">var</span> conf = &#123;</span><br><span class="line">        filename: pathname + <span class="string">'.html'</span>,</span><br><span class="line">        template: pages[pathname], <span class="comment">// 模板路径</span></span><br><span class="line">        chunks: [<span class="string">'vendor'</span>,pathname ], <span class="comment">// 每个html引用的js模块</span></span><br><span class="line">        inject: <span class="literal">true</span>              <span class="comment">// js插入位置</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象</span></span><br><span class="line">    webpackConfig.plugins.push(<span class="keyword">new</span> HtmlWebpackPlugin(conf));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -945,8 +989,38 @@ Promise
         console.log(res)
      }) 
      .catch(err=&gt;{
-        console.log(err)
-        })       
+      console.log(err)
+     })       
+</code></pre><h1 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h1><p>js检查校验工具</p>
+<pre><code>npmg install -g eslint 
+eslint --init //目录下生成　.eslintrc.json
+eslint bad-code.js //检查文件
+
+eslint bad-code.js --fix //检查过程中自动修复一些bug
+</code></pre><h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>导出模块：</p>
+<pre><code>//默认导出  一个模块中只能有一个默认导出
+export default obj;
+//默认导出 导入的时候 可以用任意名字
+import object from &apos;./obj&apos;
+
+//或者命名导出
+export const obj;
+export const person; 
+//命名导出 导入的时候名字必须匹配导出的名字 而且必须使用{}来包裹导出的内容
+import {obj} from &apos;./obj&apos;
+
+//命名导出 可以导出多个内容 导入也一样
+import {obj,person} from &apos;./obj&apos;
+
+//可以导出 数字 字符串 对象 也可以导出函数
+export function getName(name){console.log(name)}
+import {obj,person,getName} from &apos;./obj&apos;
+
+//export 也可以简写导出
+export {apiKey as key ,obj,person,getName}//as是重命名
+
+//混合导入
+import User,{createUrl,getAvatar} from &apos;./user&apos;;
 </code></pre>]]></content>
       
         <categories>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Mongey Web">
 <meta property="og:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-26T04:12:19.000Z">
+<meta property="og:updated_time" content="2018-01-29T02:13:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6">
 <meta name="twitter:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
@@ -891,8 +891,38 @@ Promise
         console.log(res)
      }) 
      .catch(err=&gt;{
-        console.log(err)
-        })       
+      console.log(err)
+     })       
+</code></pre><h1 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a>eslint</h1><p>js检查校验工具</p>
+<pre><code>npmg install -g eslint 
+eslint --init //目录下生成　.eslintrc.json
+eslint bad-code.js //检查文件
+
+eslint bad-code.js --fix //检查过程中自动修复一些bug
+</code></pre><h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>导出模块：</p>
+<pre><code>//默认导出  一个模块中只能有一个默认导出
+export default obj;
+//默认导出 导入的时候 可以用任意名字
+import object from &apos;./obj&apos;
+
+//或者命名导出
+export const obj;
+export const person; 
+//命名导出 导入的时候名字必须匹配导出的名字 而且必须使用{}来包裹导出的内容
+import {obj} from &apos;./obj&apos;
+
+//命名导出 可以导出多个内容 导入也一样
+import {obj,person} from &apos;./obj&apos;
+
+//可以导出 数字 字符串 对象 也可以导出函数
+export function getName(name){console.log(name)}
+import {obj,person,getName} from &apos;./obj&apos;
+
+//export 也可以简写导出
+export {apiKey as key ,obj,person,getName}//as是重命名
+
+//混合导入
+import User,{createUrl,getAvatar} from &apos;./user&apos;;
 </code></pre>
       
     </div>
@@ -1006,7 +1036,7 @@ Promise
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1077,7 +1107,7 @@ Promise
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demos"><span class="nav-number">1.</span> <span class="nav-text">demos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">2.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">2.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">2.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">2.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">3.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">3.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">3.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">4.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">4.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">4.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">4.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">5.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">6.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">7.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">8.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">8.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">8.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">8.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">8.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">8.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">8.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">9.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">10.</span> <span class="nav-text">扩展运算符 …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面亮的扩展"><span class="nav-number">11.</span> <span class="nav-text">对象字面亮的扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise"><span class="nav-number">12.</span> <span class="nav-text">promise</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demos"><span class="nav-number">1.</span> <span class="nav-text">demos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">2.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">2.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">2.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">2.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">3.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">3.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">3.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">4.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">4.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">4.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">4.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">5.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">6.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">7.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">8.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">8.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">8.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">8.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">8.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">8.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">8.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">9.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">10.</span> <span class="nav-text">扩展运算符 …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面亮的扩展"><span class="nav-number">11.</span> <span class="nav-text">对象字面亮的扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise"><span class="nav-number">12.</span> <span class="nav-text">promise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eslint"><span class="nav-number">13.</span> <span class="nav-text">eslint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">14.</span> <span class="nav-text">模块</span></a></li></ol></div>
             
 
           </div>
