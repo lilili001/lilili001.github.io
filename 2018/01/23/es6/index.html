@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Mongey Web">
 <meta property="og:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-29T02:13:33.000Z">
+<meta property="og:updated_time" content="2018-01-31T03:28:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6">
 <meta name="twitter:description" content="demosdemos for es6 study, more information referred to https://github.com/lilili001/es6-demos let , constlet,const :block scope 块级作用域 作用域 {} 内，{}外是无法访问的 if(true){     let name = &amp;quot;alice&amp;quot;; } c">
@@ -923,6 +923,120 @@ export {apiKey as key ,obj,person,getName}//as是重命名
 
 //混合导入
 import User,{createUrl,getAvatar} from &apos;./user&apos;;
+</code></pre><h1 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h1><p>转化es6语法为es5</p>
+<p>step1:</p>
+<pre><code>npm install --save-dev babel-cli
+</code></pre><p>因为babel没有全局安装 所以不能直接使用babel命令,但是可以通过package.json的命令来运行</p>
+<pre><code>//监听app.js 并把 app.js 转为es5 后保存到 app-compiled.js
+&quot;scripts&quot;:{
+    &quot;babel&quot; : &quot;babel app.js --watch --out-file app-compiled.js&quot;
+}
+</code></pre><p>step2: 规则集 presets<br>    npm install babel-preset-env –save-dev</p>
+<p>json<br>    {<br>      “presets”: [“env”]<br>    }</p>
+<pre><code>npm run babel
+</code></pre><h1 id="原型继承回顾"><a href="#原型继承回顾" class="headerlink" title="原型继承回顾"></a>原型继承回顾</h1><pre><code>//构造函数
+function User(name,email){
+    this.name = name;
+    this.email = email;
+    this.info = function(){
+        console.log(`Hi ,I am ${this.name}`);
+    }
+}
+
+var alice = new User(&apos;alice&apos;,&apos;alice@qq.com&apos;);//实例化 会将User对象中所有的方法都会继承下来 函数也是个对象 会占用内存
+
+//解决该问题用prototype 通过使用原型对象的属性去访问里面的方法
+User.prototype.info = function(){
+        console.log(`Hi ,I am ${this.name}`);
+}
+//这样info 方法就在__proto__ 这个原型对象上,可查看arr的 __proto__ 属性
+//原型方法是可以重写的 
+</code></pre><h1 id="es6-class"><a href="#es6-class" class="headerlink" title="es6 class"></a>es6 class</h1><p>类是特殊的函数: 不存在函数提升（对象未声明之前 实例化会报错）, 且只能通过new 来吊用</p>
+<h2 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h2><p>有两种方式 </p>
+<pre><code>class User{
+    constructor(name,email){
+        this.name = name;
+        this.email = email;
+    }
+
+    info(){
+        console.log(`Hi ,I am ${this.name}`);
+    }//alice.info()
+
+    static description(){
+        console.log(&apos;this is a static methoed description&apos;)
+    }//静态方法只能被类调用　User.description()
+
+    set github(val){
+        this.githubName = val
+    }//设置属性值 alice.github = &quot;lilili001&quot;;
+
+    get github(){
+        return `https://github.com/${this.githubName}`;
+    }//获取属性值 alice.github 
+}
+//or
+const User = class {
+
+}
+</code></pre><h2 id="类的属性可以使用计算属性的方式来定义"><a href="#类的属性可以使用计算属性的方式来定义" class="headerlink" title="类的属性可以使用计算属性的方式来定义"></a>类的属性可以使用计算属性的方式来定义</h2><pre><code>let methodName = &apos;info&apos;;
+class User{
+    [methodName](){
+        console.log(`Hi ,I am ${this.name}`);
+    }
+}
+</code></pre><h2 id="类的继承："><a href="#类的继承：" class="headerlink" title="类的继承："></a>类的继承：</h2><p>es5 中的类的继承</p>
+<pre><code>function Animal(name,age){
+    this.name = name;
+    this.age = age;
+}
+
+function Dog(name,age){
+    Animal.call(this,name,age);
+    this.name = name;
+    this.age = age;
+}
+
+Dog.prototype = new Animal();
+Dog.prototype.constructor = Dog;
+</code></pre><p> es6 中的继承</p>
+<pre><code>class Animal{
+     constructor(name){
+        this.name = name;
+        this.belly = [];
+    }
+    eat(food){
+        this.belly.push(food)
+    }
+}  
+
+class Dog extends Animal{
+    constructor(name,age){
+        super(name);
+        this.age = age;
+    }
+    bark(){
+        console.log(&apos;Bark!Belly!&apos;)
+    }
+} 
+const belly = new Dog(&apos;Belly&apos;,2);
+</code></pre><p> 如果子类有方法和父类同名 则会覆盖父类的方法</p>
+<p> 实例：</p>
+<pre><code>class newArr extends Array{
+    constructor(name,...items){
+        super(name,...items);
+        this.name = name;
+    }
+    add(movie){
+        this.push(movie)
+    }
+  }
+  const movie = new newArr(&apos;alice&apos;,
+    {name:&apos;frank&apos;,score:9.8},
+    {name:&apos;joe&apos;,score:9.7},
+    {name:&apos;poly&apos;,score:9.6}
+    )
+  movie.push(&apos;Her&apos;)
 </code></pre>
       
     </div>
@@ -1036,7 +1150,7 @@ import User,{createUrl,getAvatar} from &apos;./user&apos;;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1047,7 +1161,7 @@ import User,{createUrl,getAvatar} from &apos;./user&apos;;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1091,7 +1205,7 @@ import User,{createUrl,getAvatar} from &apos;./user&apos;;
 <h4>所有分类</h4>
                   
                   <div class="category-all">
-                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
+                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
                   </div>
                 </div>
         </div>
@@ -1107,7 +1221,7 @@ import User,{createUrl,getAvatar} from &apos;./user&apos;;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demos"><span class="nav-number">1.</span> <span class="nav-text">demos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">2.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">2.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">2.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">2.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">3.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">3.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">3.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">4.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">4.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">4.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">4.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">5.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">6.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">7.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">8.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">8.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">8.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">8.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">8.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">8.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">8.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">9.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">10.</span> <span class="nav-text">扩展运算符 …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面亮的扩展"><span class="nav-number">11.</span> <span class="nav-text">对象字面亮的扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise"><span class="nav-number">12.</span> <span class="nav-text">promise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eslint"><span class="nav-number">13.</span> <span class="nav-text">eslint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">14.</span> <span class="nav-text">模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demos"><span class="nav-number">1.</span> <span class="nav-text">demos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-const"><span class="nav-number">2.</span> <span class="nav-text">let , const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别："><span class="nav-number">2.1.</span> <span class="nav-text">区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let-和-const-私有化"><span class="nav-number">2.2.</span> <span class="nav-text">let 和 const 私有化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#临时性死区"><span class="nav-number">2.3.</span> <span class="nav-text">临时性死区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.</span> <span class="nav-text">箭头函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式返回"><span class="nav-number">3.1.</span> <span class="nav-text">隐式返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.2.</span> <span class="nav-text">函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-this"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数 this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数默认值"><span class="nav-number">3.4.</span> <span class="nav-text">函数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不适用的场景"><span class="nav-number">3.5.</span> <span class="nav-text">不适用的场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串模版"><span class="nav-number">4.</span> <span class="nav-text">字符串模版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模版标签"><span class="nav-number">4.1.</span> <span class="nav-text">模版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串转义"><span class="nav-number">4.2.</span> <span class="nav-text">模板字符串转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版函数"><span class="nav-number">4.3.</span> <span class="nav-text">模版函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象解构"><span class="nav-number">5.</span> <span class="nav-text">对象解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组解构"><span class="nav-number">6.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for-of"><span class="nav-number">7.</span> <span class="nav-text">for of</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组相关"><span class="nav-number">8.</span> <span class="nav-text">数组相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from-Array-of"><span class="nav-number">8.1.</span> <span class="nav-text">Array.from()  Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-of"><span class="nav-number">8.2.</span> <span class="nav-text">Array.of()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-fn"><span class="nav-number">8.3.</span> <span class="nav-text">find(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findIndex-fn"><span class="nav-number">8.4.</span> <span class="nav-text">findIndex(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-fn"><span class="nav-number">8.5.</span> <span class="nav-text">some(fn)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-fn"><span class="nav-number">8.6.</span> <span class="nav-text">every(fn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剩余参数"><span class="nav-number">9.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展运算符-…"><span class="nav-number">10.</span> <span class="nav-text">扩展运算符 …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象字面亮的扩展"><span class="nav-number">11.</span> <span class="nav-text">对象字面亮的扩展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#promise"><span class="nav-number">12.</span> <span class="nav-text">promise</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eslint"><span class="nav-number">13.</span> <span class="nav-text">eslint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">14.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#babel"><span class="nav-number">15.</span> <span class="nav-text">babel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型继承回顾"><span class="nav-number">16.</span> <span class="nav-text">原型继承回顾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#es6-class"><span class="nav-number">17.</span> <span class="nav-text">es6 class</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的定义"><span class="nav-number">17.1.</span> <span class="nav-text">类的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的属性可以使用计算属性的方式来定义"><span class="nav-number">17.2.</span> <span class="nav-text">类的属性可以使用计算属性的方式来定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的继承："><span class="nav-number">17.3.</span> <span class="nav-text">类的继承：</span></a></li></ol></li></ol></div>
             
 
           </div>
