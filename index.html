@@ -426,7 +426,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/29/node/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/01/29/node/" itemprop="url">nodejs</a></h1>
         
 
         <div class="post-meta">
@@ -448,6 +448,50 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/Js/" itemprop="url" rel="index">
+                    <span itemprop="name">Js</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/Js/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -478,9 +522,7 @@
       
         
           
-            <hr>
-<p>title:nodejs</p>
-<h2 id="categories-前端-Js-nodejs"><a href="#categories-前端-Js-nodejs" class="headerlink" title="categories:[前端,Js,nodejs]"></a>categories:[前端,Js,nodejs]</h2><ol>
+            <ol>
 <li>path.basename<br>提取出用 ‘/‘ 隔开的path的最后一部分</li>
 </ol>
 <p>path.basename(p, [ext]);</p>
@@ -1310,9 +1352,86 @@ render(){
 }    
 </code></pre></li>
 </ul>
-<h1 id="react-事件"><a href="#react-事件" class="headerlink" title="react 事件"></a>react 事件</h1><ol>
-<li>Layout中创建事件函数，并将该事件作为属性传给Header</li>
-</ol>
+<h1 id="react-事件"><a href="#react-事件" class="headerlink" title="react 事件"></a>react 事件</h1><p>eg-0:子组件如何调用父组件函数：</p>
+<p>父组件中定义函数　onGree 并以prop 的形势传递给Home子组件 ，子组件中调用　onGreet</p>
+<pre><code>//父组件 layout.js
+onGreet(){
+    alert(&apos;greet from the layout component&apos;)
+}
+
+// render 方法中
+&lt;Home greet={this.onGreet}&gt;this is a paragraph &lt;/Home&gt;
+
+//子组件
+&lt;button onClick={this.props.greet} className=&quot;btn btn-primary&quot;&gt;greet&lt;/button&gt;
+</code></pre><p>eg-1:使用了 state 父子组件数据传递</p>
+<p>layout.js</p>
+<pre><code>constructor(){
+    super();
+    this.state = {
+        title:&apos;alice&apos;,
+        homeLink:&apos;Home&apos;
+    };
+} 
+onChangeLinkName(newName){
+    this.setState({
+        homeLink : newName
+    })
+}
+
+//render method
+&lt;Top logo={this.state.homeLink}  /&gt; //Top 里面无state 
+ &lt;Home
+     user={user}
+     greet={this.onGreet}
+     changeLink={this.onChangeLinkName.bind(this)}
+ &gt;this is a paragraph &lt;/Home&gt;
+</code></pre><p>home.js</p>
+<pre><code>constructor(props){
+    super();
+
+    //初始化state
+    this.state = {
+        age : props.user.age,
+        homeLink: &apos;New Home&apos;
+    }
+} 
+onChangeLink(){
+    this.props.changeLink(this.state.homeLink)
+}
+&lt;button onClick={this.onChangeLink.bind(this)} className=&quot;btn btn-primary&quot;&gt;change Top Home Link&lt;/button&gt;
+</code></pre><p>通过 Home.js 里面的 change Top Home Link , 调用Layout中的changeLink方法修改了layout中的HomeLink state,最终影响Top的prop log</p>
+<p>eg-2: 数据双向绑定：<br>通过子组件state改变 传递子组件state 给父组件, 子组件state改变的原因是使input能输入,继续上面</p>
+<p>layout.js</p>
+<pre><code>&lt;Home
+     user={user}
+     greet={this.onGreet}
+     changeLink={this.onChangeLinkName.bind(this)}
+     initialLink={this.state.homeLink}
+ &gt;this is a paragraph &lt;/Home&gt;
+</code></pre><p>home.js</p>
+<pre><code>constructor(props){
+    super();
+
+    //初始化state
+    this.state = {
+        age : props.user.age,
+        homeLink: props.initialLink
+    }
+}
+
+onChangeLink(){
+    this.props.changeLink(this.state.homeLink)
+}
+onHandleChange(event){
+    this.setState({
+        homeLink:event.target.value
+    })
+}
+&lt;input type=&quot;text&quot; value={this.state.homeLink} onChange={ (event)=&gt; this.onHandleChange(event)  }/&gt;
+            &lt;button onClick={this.onChangeLink.bind(this)} className=&quot;btn btn-primary&quot;&gt;change Top Home Link&lt;/button&gt;
+</code></pre><p>eg-3:</p>
+<p>1.Layout中创建事件函数，并将该事件作为属性传给Header</p>
 <pre><code>import React from &quot;react&quot;;
 import Header from &quot;./Header&quot;;
 import Footer from &quot;./Footer&quot;;
@@ -1358,7 +1477,33 @@ $ npm install -S history
 </code></pre><h1 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h1><pre><code>const style={marginTop:&quot;10px&quot;}
 
 &lt;div style={style}&gt;&lt;/div&gt;
-</code></pre>
+</code></pre><h2 id="stateless-component"><a href="#stateless-component" class="headerlink" title="stateless component"></a>stateless component</h2><p>有的组件不需要任何的state 那么可以写成下面这样</p>
+<pre><code>import React from &apos;react&apos;;
+export const Top = (props)=&gt; {
+    return (
+        &lt;div&gt;
+            &lt;div class=&quot;nav-scroller bg-white box-shadow&quot;&gt;
+                &lt;nav class=&quot;nav nav-underline&quot;&gt;
+                    &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;{props.logo}&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;
+                        Friends
+                        &lt;span class=&quot;badge badge-pill bg-light align-text-bottom&quot;&gt;27&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Suggestions&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                &lt;/nav&gt;
+                &lt;h4&gt;&lt;/h4&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    )
+};
+</code></pre><p>export 一个const 箭头函数也可以 而且可以接受props<br>导入的时候 <code>import {Top} from &#39;./Top&#39;</code></p>
+
           
         
       
@@ -2436,7 +2581,7 @@ const belly = new Dog(&apos;Belly&apos;,2);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2480,7 +2625,7 @@ const belly = new Dog(&apos;Belly&apos;,2);
 <h4>所有分类</h4>
                   
                   <div class="category-all">
-                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
+                  	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/">Js</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/Js/webpack/">webpack</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/npm/">npm</a><span class="category-list-count">1</span></li></ul></li></ul>
                   </div>
                 </div>
         </div>
