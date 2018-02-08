@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
+<meta name="description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 <meta name="keywords" content="a,b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React">
 <meta property="og:url" content="https://lilili001.github.io/2018/01/24/react/index.html">
 <meta property="og:site_name" content="Mongey Web">
-<meta property="og:description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
+<meta property="og:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T03:39:31.000Z">
+<meta property="og:updated_time" content="2018-02-08T03:10:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React">
-<meta name="twitter:description" content="初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfsdf时尚&amp;lt;/h1&amp;gt;">
+<meta name="twitter:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 
 
 
@@ -377,7 +377,8 @@
       
 
       
-        <h1 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h1><pre><code>import React from &quot;react&quot;;
+        <h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p><a href="https://github.com/lilili001/for-react-study" target="_blank" rel="noopener">react demo</a></p>
+<h1 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h1><pre><code>import React from &quot;react&quot;;
 import ReactDom from &quot;react-dom&quot;;
 class Layout extends React.Component{
     render(){
@@ -675,7 +676,48 @@ export const Top = (props)=&gt; {
     )
 };
 </code></pre><p>export 一个const 箭头函数也可以 而且可以接受props<br>导入的时候 <code>import {Top} from &#39;./Top&#39;</code></p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>1.componentWillMount  </p>
+<p>执行constructor,componentWillMount 组件渲染之前，可用于setState等</p>
+<p>2.componentDidMount</p>
+<p>render后执行，每次状态改变的时候会rerender</p>
+<p>3.componentWillReceiveProps</p>
+<p>when componnet recieve new props</p>
+<p>4.shouldComponentUpdate</p>
+<p>Before rendering,after receiving new props or state</p>
+<p>5.componentWillUpdate</p>
+<p>Before rendering,after receiving new props or state</p>
+<p>6.componentDidUpdate<br>After components’s updates are flushed to DOM</p>
+<p>7.componentWillUnmount<br>Immediately before removing component from DOM</p>
+<h1 id="react-router-dom"><a href="#react-router-dom" class="headerlink" title="react-router-dom"></a>react-router-dom</h1><p>本地用webpack , 经常会有 cant get/ 这种报错，解决如下：</p>
+<p>1.webpack.config.js</p>
+<pre><code>devServer: {
+    historyApiFallback: true,
+},
+</code></pre><p>2.router配置</p>
+<pre><code>&lt;BrowserRouter&gt;
+                &lt;div&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/feature&quot;&gt;Feature&lt;/Link&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/article&quot;&gt;Article&lt;/Link&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
 
+                    &lt;Switch&gt;
+                        &lt;Route exact path=&quot;/&quot; render={()=&gt; (
+                            &lt;div&gt;
+                                     &lt;Top logo={this.state.homeLink}  /&gt;
+                                     &lt;Header name={&quot;poly&quot;} changeTitle={this.changeTitle.bind(this)} title={this.state.title}/&gt;
+                                      {homeCmp}
+                                      &lt;button onClick={this.onChangeHomeMounted.bind(this)} className=&quot;btn btn-primary&quot;&gt;(un)Mount Home Component&lt;/button&gt;
+                                      &lt;Footer/&gt;
+                            &lt;/div&gt;
+                        )} /&gt;
+                        &lt;Route exact path=&quot;/feature&quot; component={Feature} /&gt;
+                        &lt;Route exact path=&quot;/article&quot; component={Article} /&gt;
+                    &lt;/Switch&gt;
+                &lt;/div&gt;
+            &lt;/BrowserRouter&gt;    
+</code></pre>
       
     </div>
     
@@ -867,7 +909,7 @@ export const Top = (props)=&gt; {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">1.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">2.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">3.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">4.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stateless-component"><span class="nav-number">4.1.</span> <span class="nav-text">stateless component</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">3.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">4.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">5.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stateless-component"><span class="nav-number">5.1.</span> <span class="nav-text">stateless component</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">6.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-router-dom"><span class="nav-number">7.</span> <span class="nav-text">react-router-dom</span></a></li></ol></div>
             
 
           </div>
