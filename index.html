@@ -1609,8 +1609,8 @@ export default class Todos extends React.Component{
 }
 </code></pre><h2 id="dispatcher"><a href="#dispatcher" class="headerlink" title="dispatcher"></a>dispatcher</h2><p>当todoStore 发生change的时候, 它emit一个change 方法,组件可以动态改变,随时更新</p>
 <p>stores/todoStore.js中定义一个方法 并emit给组件</p>
-<p><img src="images/WX20180223-101719@2x.png" alt=""></p>
-<p>pages/todo.js 中接收 并实时更新<br><img src="images/WX20180223-101939@2x.png" alt=""></p>
+<p><img src="/images/WX20180223-101719@2x.png" alt=""></p>
+<p>pages/todo.js 中接收 并实时更新<br><img src="/images/WX20180223-101939@2x.png" alt=""></p>
 <p>现在可以把todoStore 挂载到全局 <code>window.todoStore = todoStore;//在console打印 todoStore.createTodo(&#39;test&#39;)试试</code></p>
 <p>把todoStore注册到dispatcher中,便于处理不同状态的actions</p>
 <pre><code>npm install -S flaux
@@ -1670,7 +1670,7 @@ window.todoStore = todoStore;//在console打印 todoStore.createTodo(&apos;test&
 
 export default todoStore; 
 </code></pre><h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><p>actions/TodoActions.js</p>
-<p>!()[images/WX20180223-103841@2x.png]</p>
+<p>!()[/images/WX20180223-103841@2x.png]</p>
 <p>pages/Todos.js 调用actions　</p>
 <pre><code>import * as TodoActions from &quot;../Actions/TodoActions&quot;;
 
