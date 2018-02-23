@@ -87,10 +87,14 @@
 <meta property="og:site_name" content="Mongey Web">
 <meta property="og:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-08T03:10:21.000Z">
+<meta property="og:image" content="https://lilili001.github.io/images/WX20180223-095047@2x.png">
+<meta property="og:image" content="https://lilili001.github.io/2018/01/24/react/images/WX20180223-101719@2x.png">
+<meta property="og:image" content="https://lilili001.github.io/2018/01/24/react/images/WX20180223-101939@2x.png">
+<meta property="og:updated_time" content="2018-02-23T02:41:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React">
 <meta name="twitter:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
+<meta name="twitter:image" content="https://lilili001.github.io/images/WX20180223-095047@2x.png">
 
 
 
@@ -717,6 +721,147 @@ export const Top = (props)=&gt; {
                     &lt;/Switch&gt;
                 &lt;/div&gt;
             &lt;/BrowserRouter&gt;    
+</code></pre><h1 id="store-amp-amp-flaux"><a href="#store-amp-amp-flaux" class="headerlink" title="store &amp;&amp; flaux"></a>store &amp;&amp; flaux</h1><p>store 的出现让组件中 state中的数据得以分离到单个文件中：</p>
+<p><img src="/images/WX20180223-095047@2x.png" alt="">    </p>
+<p>TodoStore 对外开放的是一个对象 TodoStore, 组件能监听TodoStore的change TodoStore.on(‘change’,dosomething)</p>
+<h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><p>首先要导入nodejs的 <code>import { EventEmitter } from &quot;events&quot;;</code> events事件<br>stores/TodoStore.js</p>
+<pre><code>import { EventEmitter } from &quot;events&quot;;
+class TodoStore extends EventEmitter{//继承的是EventEmitter
+    constructor(){
+        super();
+        this.todos = [
+                {
+                    id:1134567,
+                    text:&quot;Go Shopping&quot;,
+                    complete:false
+                },
+                {
+                    id:1134568,
+                    text:&quot;Pay Bills&quot;,
+                    complete:false
+                }
+            ]  
+    }
+    getAll(){
+        return this.todos;
+    }
+}
+
+//每当引入todostore的时候都会实例化
+const todoStore = new TodoStore;
+todoStore.on(&apos;change&apos;,dosomething);
+
+export default todoStore; 
+</code></pre><p>pages/Todos.js 组件中引入todoStore.js 并使用它的方法 TodoStore.getAll() ,当todoStore.js中的数据改变时, 组件的视图会跟着改变</p>
+<pre><code>import React from &apos;react&apos;;
+
+import Todo from &quot;../components/Todo&quot;;
+import * as TodoActions from &quot;../Actions/TodoActions&quot;;
+import TodoStore from &quot;../stores/TodoStore&quot;;
+
+export default class Todos extends React.Component{
+    constructor(){
+        super();
+        this.getTodos = this.getTodos.bind(this);
+        this.state = {
+            todos: TodoStore.getAll()
+        }
+    }
+
+    render(){
+        const {todos} = this.state;
+        const TodoComponents = todos.map((todo)=&gt;{
+            return &lt;Todo key={todo.id} {...todo} /&gt;
+        });
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Todos&lt;/h1&gt;
+                &lt;button onClick={this.createTodo.bind(this)}&gt;Create!&lt;/button&gt;
+                &lt;button onClick={this.loadTodos.bind(this)}&gt;Load!&lt;/button&gt;
+                &lt;ul&gt;{TodoComponents}&lt;/ul&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre><h2 id="dispatcher"><a href="#dispatcher" class="headerlink" title="dispatcher"></a>dispatcher</h2><p>当todoStore 发生change的时候, 它emit一个change 方法,组件可以动态改变,随时更新</p>
+<p>stores/todoStore.js中定义一个方法 并emit给组件</p>
+<p><img src="images/WX20180223-101719@2x.png" alt=""></p>
+<p>pages/todo.js 中接收 并实时更新<br><img src="images/WX20180223-101939@2x.png" alt=""></p>
+<p>现在可以把todoStore 挂载到全局 <code>window.todoStore = todoStore;//在console打印 todoStore.createTodo(&#39;test&#39;)试试</code></p>
+<p>把todoStore注册到dispatcher中,便于处理不同状态的actions</p>
+<pre><code>npm install -S flaux
+</code></pre><p>dispatcher.js</p>
+<pre><code>import {Dispatcher} from &quot;flux&quot;;
+
+export default new Dispatcher;
+</code></pre><p>todoStore.js</p>
+<pre><code>import { EventEmitter } from &quot;events&quot;;
+
+import dispatcher from &quot;../dispatcher&quot;;
+
+class TodoStore extends EventEmitter{
+    constructor(){
+        super();
+        this.todos = [
+                {
+                    id:1134567,
+                    text:&quot;Go Shopping&quot;,
+                    complete:false
+                },
+                {
+                    id:1134568,
+                    text:&quot;Pay Water Bills&quot;,
+                    complete:false
+                }
+            ]  
+
+    }
+
+    createTodo(text){
+        const id = Date.now();
+        this.todos.push({
+            id,
+            text,
+            complete:false
+        });
+
+        this.emit(&apos;change&apos;);
+
+    }
+    getAll(){
+        return this.todos;
+    }
+    handleActions(action){
+        console.log(&apos;todoStore recieved an action:&apos;,action);
+    }
+}
+
+const todoStore = new TodoStore;
+
+dispatcher.register( todoStore.handleActions.bind(todoStore) );
+
+window.dispatcher = dispatcher;//console打印 dispatcher.dispatcher({type:&apos;&apos;,text:&apos;&apos;})
+
+window.todoStore = todoStore;//在console打印 todoStore.createTodo(&apos;test&apos;)试试
+
+export default todoStore; 
+</code></pre><h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><p>actions/TodoActions.js</p>
+<p>!()[images/WX20180223-103841@2x.png]</p>
+<p>pages/Todos.js 调用actions　</p>
+<pre><code>import * as TodoActions from &quot;../Actions/TodoActions&quot;;
+
+createTodo(){
+    TodoActions.createTodo( Date.now() );
+}
+
+render(){
+    return (
+        &lt;div&gt;
+            &lt;button onClick={this.createTodo.bind(this)}&gt;Create!&lt;/button&gt;
+            &lt;button onClick={this.loadTodos.bind(this)}&gt;Load!&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
 </code></pre>
       
     </div>
@@ -909,7 +1054,7 @@ export const Top = (props)=&gt; {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">3.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">4.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">5.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stateless-component"><span class="nav-number">5.1.</span> <span class="nav-text">stateless component</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">6.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-router-dom"><span class="nav-number">7.</span> <span class="nav-text">react-router-dom</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">3.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">4.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">5.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stateless-component"><span class="nav-number">5.1.</span> <span class="nav-text">stateless component</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">6.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-router-dom"><span class="nav-number">7.</span> <span class="nav-text">react-router-dom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#store-amp-amp-flaux"><span class="nav-number">8.</span> <span class="nav-text">store &amp;&amp; flaux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">8.1.</span> <span class="nav-text">event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatcher"><span class="nav-number">8.2.</span> <span class="nav-text">dispatcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#actions"><span class="nav-number">8.3.</span> <span class="nav-text">actions</span></a></li></ol></li></ol></div>
             
 
           </div>
