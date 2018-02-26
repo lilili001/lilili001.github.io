@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://lilili001.github.io/images/WX20180223-095047@2x.png">
 <meta property="og:image" content="https://lilili001.github.io/images/WX20180223-101719@2x.png">
 <meta property="og:image" content="https://lilili001.github.io/images/WX20180223-101939@2x.png">
-<meta property="og:updated_time" content="2018-02-26T02:53:15.000Z">
+<meta property="og:updated_time" content="2018-02-26T02:54:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React">
 <meta name="twitter:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
@@ -864,28 +864,21 @@ render(){
 }
 </code></pre><h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><p>!()[/images/WX20180224-101336@2x.png]</p>
 <p>对象的重新赋值</p>
-<pre><code>--Object.assign
-
-var a = {name:&apos;alice&apos;,age:12}
+<p>–Object.assign</p>
+<pre><code>var a = {name:&apos;alice&apos;,age:12}
 var b = Object.assgin({},a,{name:&apos;fred&apos;});//{name:&apos;fred&apos;,age:12}
 
 //a:{name:&apos;alice&apos;,age:12}
-
--- concat
-
-var a = [1,2];
+</code></pre><p>– concat</p>
+<pre><code>var a = [1,2];
 var b = a.concat(3);//[1,2,3]  
 //a:[1,2]
-
---filter
-
-var a = [1,2];
+</code></pre><p>–filter</p>
+<pre><code>var a = [1,2];
 var b = a.filter(val=&gt;val!==1); //2
 //a:[1,2]
-
---reduce map
-
-npm install -S redux
+</code></pre><p>–reduce map</p>
+<pre><code>npm install -S redux
 </code></pre><h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇:"></a>第一篇:</h2><pre><code>import {createStore} from &apos;redux&apos;;
 const reducer = function(state,action){
     if(action.type==&apos;INC&apos;){
