@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="demoreact demo 初探123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+<meta name="description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 <meta name="keywords" content="a,b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React">
 <meta property="og:url" content="https://lilili001.github.io/2018/01/24/react/index.html">
 <meta property="og:site_name" content="Mongey Web">
-<meta property="og:description" content="demoreact demo 初探123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+<meta property="og:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T02:50:50.000Z">
+<meta property="og:image" content="https://lilili001.github.io/images/WX20180223-095047@2x.png">
+<meta property="og:image" content="https://lilili001.github.io/images/WX20180223-101719@2x.png">
+<meta property="og:image" content="https://lilili001.github.io/images/WX20180223-101939@2x.png">
+<meta property="og:updated_time" content="2018-02-26T02:51:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React">
-<meta name="twitter:description" content="demoreact demo 初探123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+<meta name="twitter:description" content="demoreact demo 初探import React from &amp;quot;react&amp;quot;; import ReactDom from &amp;quot;react-dom&amp;quot;; class Layout extends React.Component{     render(){          return (                   &amp;lt;h1&amp;gt;sdfs">
+<meta name="twitter:image" content="https://lilili001.github.io/images/WX20180223-095047@2x.png">
 
 
 
@@ -378,8 +382,498 @@
 
       
         <h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p><a href="https://github.com/lilili001/for-react-study" target="_blank" rel="noopener">react demo</a></p>
-<h1 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h1><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">import</span> <span class="type">React</span> from <span class="string">"react"</span>;</span><br><span class="line">	<span class="keyword">import</span> <span class="type">ReactDom</span> from <span class="string">"react-dom"</span>;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Layout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	const app = document.getElementById(<span class="symbol">'ap</span>p');</span><br><span class="line">	<span class="type">ReactDom</span>.render(&lt;<span class="type">Layout</span>/&gt;,app);</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">- jsx 元素必须有一个包裹，如果这样就报错</span><br><span class="line">	 </span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;</span><br><span class="line">			 		 &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">- 变量的使用</span><br><span class="line"></span><br><span class="line">		render()&#123;</span><br><span class="line">			const name = <span class="string">"alice"</span>;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;&#123;name&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line">	 	</span><br><span class="line">	 	<span class="comment">//表达式</span></span><br><span class="line">	 	<span class="keyword">return</span> (</span><br><span class="line">	 		 &lt;h1&gt;&#123;<span class="number">4</span>*<span class="number">4</span>&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">	 	);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//使用函数</span></span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">	 		 &lt;h1&gt;&#123;(function()&#123;<span class="keyword">return</span> <span class="number">3</span>;&#125;)()&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">	 	);	</span><br><span class="line"></span><br><span class="line">	 	<span class="comment">//方法</span></span><br><span class="line">	 	<span class="class"><span class="keyword">class</span> <span class="title">Layout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">			getVal()&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="symbol">'wil</span>l';</span><br><span class="line">			&#125;</span><br><span class="line">			render()&#123;</span><br><span class="line">				 <span class="keyword">return</span> (</span><br><span class="line">				 		 &lt;h1&gt;&#123;<span class="keyword">this</span>.getVal()&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">				 	);</span><br><span class="line">				 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//constructor方法 放各种变量</span></span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.name = <span class="symbol">'wil</span>l';</span><br><span class="line">		&#125;</span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;&#123;<span class="keyword">this</span>.name&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;	</span><br><span class="line">- 文件组件模块化</span><br><span class="line"></span><br><span class="line">	client.js</span><br><span class="line">	 </span><br><span class="line">		<span class="keyword">import</span> <span class="type">React</span> from <span class="string">"react"</span>;</span><br><span class="line">		<span class="keyword">import</span> <span class="type">ReactDom</span> from <span class="string">"react-dom"</span>;</span><br><span class="line">		<span class="keyword">import</span> <span class="type">Layout</span> from './components/<span class="type">Layout</span>';</span><br><span class="line">		const app = document.getElementById(<span class="symbol">'ap</span>p');</span><br><span class="line">		<span class="type">ReactDom</span>.render(&lt;<span class="type">Layout</span>/&gt;,app);</span><br><span class="line">	 </span><br><span class="line">	components/<span class="type">Layout</span>.js</span><br><span class="line"></span><br><span class="line">		<span class="keyword">import</span> <span class="type">React</span> from <span class="string">"react"</span>;</span><br><span class="line">		export <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Layout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">			constructor()&#123;</span><br><span class="line">				<span class="keyword">super</span>();</span><br><span class="line">				<span class="keyword">this</span>.name = <span class="symbol">'wil</span>l';</span><br><span class="line">			&#125;</span><br><span class="line">			render()&#123;</span><br><span class="line">				 <span class="keyword">return</span> (</span><br><span class="line">				 		 &lt;h1&gt;&#123;<span class="keyword">this</span>.name&#125; sdfsdf时尚aaabbb&lt;/h1&gt;</span><br><span class="line">				 	);</span><br><span class="line">				 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">- state使用 状态自动更新</span><br><span class="line"></span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.state = &#123;name:<span class="symbol">'alic</span>e'&#125;;</span><br><span class="line">		&#125;  </span><br><span class="line">		render()&#123;</span><br><span class="line">			setTimeout(()=&gt;&#123;<span class="keyword">this</span>.setState(&#123;name:<span class="symbol">'bo</span>b'&#125;)&#125;,<span class="number">1000</span>);</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;div&gt;</span><br><span class="line">			 		 	&#123;<span class="keyword">this</span>.state.name&#125;</span><br><span class="line">			 		 	&lt;<span class="type">Header</span>/&gt;</span><br><span class="line">			 		 	&lt;<span class="type">Footer</span>/&gt;</span><br><span class="line">			 		 &lt;/div&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;	</span><br><span class="line">- props</span><br><span class="line">	</span><br><span class="line">	父组件 <span class="type">Header</span></span><br><span class="line"></span><br><span class="line">		render()&#123;</span><br><span class="line">			const title=<span class="string">"Welcome Will"</span>;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		  &lt;<span class="type">Title</span> title=&#123;title&#125;/&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	子组件 <span class="type">Title</span></span><br><span class="line"></span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;&#123;<span class="keyword">this</span>.props.title&#125;&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;	</span><br><span class="line"></span><br><span class="line">	state 结合 props</span><br><span class="line"></span><br><span class="line">		<span class="comment">//父组件 Header</span></span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.state=&#123;title:<span class="symbol">'wil</span>l'&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		render()&#123;</span><br><span class="line">			setTimeout(()=&gt;&#123;</span><br><span class="line">				<span class="keyword">this</span>.setState(&#123;title:<span class="symbol">'welcome</span> will'&#125;)</span><br><span class="line">			&#125;,<span class="number">1000</span>);</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		  &lt;<span class="type">Title</span> title=&#123;<span class="keyword">this</span>.state.title&#125; /&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//子组件 Title	</span></span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;h1&gt;&#123;<span class="keyword">this</span>.props.title&#125;&lt;/h1&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;	</span><br><span class="line"></span><br><span class="line"># react 事件</span><br><span class="line"></span><br><span class="line">eg<span class="number">-0</span>:子组件如何调用父组件函数：</span><br><span class="line"></span><br><span class="line">父组件中定义函数　onGree 并以prop 的形势传递给<span class="type">Home</span>子组件 ，子组件中调用　onGreet</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//父组件 layout.js</span></span><br><span class="line">	onGreet()&#123;</span><br><span class="line">        alert(<span class="symbol">'greet</span> from the layout component')</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// render 方法中</span></span><br><span class="line">    &lt;<span class="type">Home</span> greet=&#123;<span class="keyword">this</span>.onGreet&#125;&gt;<span class="keyword">this</span> is a paragraph &lt;/<span class="type">Home</span>&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//子组件</span></span><br><span class="line">    &lt;button onClick=&#123;<span class="keyword">this</span>.props.greet&#125; className=<span class="string">"btn btn-primary"</span>&gt;greet&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">eg<span class="number">-1</span>:使用了 state 父子组件数据传递</span><br><span class="line"></span><br><span class="line">layout.js</span><br><span class="line"></span><br><span class="line">	constructor()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state = &#123;</span><br><span class="line">			title:<span class="symbol">'alic</span>e',</span><br><span class="line">			homeLink:<span class="symbol">'Hom</span>e'</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125; </span><br><span class="line">	onChangeLinkName(newName)&#123;</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            homeLink : newName</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//render method</span></span><br><span class="line">	&lt;<span class="type">Top</span> logo=&#123;<span class="keyword">this</span>.state.homeLink&#125;  /&gt; <span class="comment">//Top 里面无state </span></span><br><span class="line">	 &lt;<span class="type">Home</span></span><br><span class="line">		 user=&#123;user&#125;</span><br><span class="line">		 greet=&#123;<span class="keyword">this</span>.onGreet&#125;</span><br><span class="line">		 changeLink=&#123;<span class="keyword">this</span>.onChangeLinkName.bind(<span class="keyword">this</span>)&#125;</span><br><span class="line">	 &gt;<span class="keyword">this</span> is a paragraph &lt;/<span class="type">Home</span>&gt;</span><br><span class="line"></span><br><span class="line">home.js</span><br><span class="line"></span><br><span class="line">	constructor(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//初始化state</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            age : props.user.age,</span><br><span class="line">            homeLink: <span class="symbol">'New</span> <span class="type">Home</span>'</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    onChangeLink()&#123;</span><br><span class="line">        <span class="keyword">this</span>.props.changeLink(<span class="keyword">this</span>.state.homeLink)</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;button onClick=&#123;<span class="keyword">this</span>.onChangeLink.bind(<span class="keyword">this</span>)&#125; className=<span class="string">"btn btn-primary"</span>&gt;change <span class="type">Top</span> <span class="type">Home</span> <span class="type">Link</span>&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">通过 <span class="type">Home</span>.js 里面的 change <span class="type">Top</span> <span class="type">Home</span> <span class="type">Link</span> , 调用<span class="type">Layout</span>中的changeLink方法修改了layout中的<span class="type">HomeLink</span> state,最终影响<span class="type">Top</span>的prop log</span><br><span class="line"></span><br><span class="line">eg<span class="number">-2</span>: 数据双向绑定：</span><br><span class="line">通过子组件state改变 传递子组件state 给父组件, 子组件state改变的原因是使input能输入,继续上面</span><br><span class="line"></span><br><span class="line">layout.js</span><br><span class="line">	</span><br><span class="line">	&lt;<span class="type">Home</span></span><br><span class="line">		 user=&#123;user&#125;</span><br><span class="line">		 greet=&#123;<span class="keyword">this</span>.onGreet&#125;</span><br><span class="line">		 changeLink=&#123;<span class="keyword">this</span>.onChangeLinkName.bind(<span class="keyword">this</span>)&#125;</span><br><span class="line">		 initialLink=&#123;<span class="keyword">this</span>.state.homeLink&#125;</span><br><span class="line">	 &gt;<span class="keyword">this</span> is a paragraph &lt;/<span class="type">Home</span>&gt;</span><br><span class="line"></span><br><span class="line">home.js</span><br><span class="line"></span><br><span class="line">	constructor(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//初始化state</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            age : props.user.age,</span><br><span class="line">            homeLink: props.initialLink</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onChangeLink()&#123;</span><br><span class="line">        <span class="keyword">this</span>.props.changeLink(<span class="keyword">this</span>.state.homeLink)</span><br><span class="line">    &#125;</span><br><span class="line">    onHandleChange(event)&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            homeLink:event.target.value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.homeLink&#125; onChange=&#123; (event)=&gt; <span class="keyword">this</span>.onHandleChange(event)  &#125;/&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.onChangeLink.bind(<span class="keyword">this</span>)&#125; className=<span class="string">"btn btn-primary"</span>&gt;change <span class="type">Top</span> <span class="type">Home</span> <span class="type">Link</span>&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">eg<span class="number">-3</span>:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span><span class="type">Layout</span>中创建事件函数，并将该事件作为属性传给<span class="type">Header</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">	<span class="keyword">import</span> <span class="type">React</span> from <span class="string">"react"</span>;</span><br><span class="line">	<span class="keyword">import</span> <span class="type">Header</span> from <span class="string">"./Header"</span>;</span><br><span class="line">	<span class="keyword">import</span> <span class="type">Footer</span> from <span class="string">"./Footer"</span>;</span><br><span class="line">	export <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Layout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.state = &#123;title:<span class="symbol">'alic</span>e'&#125;;</span><br><span class="line">		&#125; </span><br><span class="line">		changeTitle(title)&#123;</span><br><span class="line">			<span class="keyword">this</span>.setState(&#123;title&#125;)</span><br><span class="line">		&#125; </span><br><span class="line">		render()&#123;</span><br><span class="line">			<span class="comment">//setTimeout(()=&gt;this.setState(&#123;title:'joe'&#125;),1000)</span></span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		 &lt;div&gt;</span><br><span class="line">			 		 	&lt;<span class="type">Header</span> changeTitle=&#123;<span class="keyword">this</span>.changeTitle.bind(<span class="keyword">this</span>)&#125; title=&#123;<span class="keyword">this</span>.state.title&#125;/&gt;</span><br><span class="line">			 		 	&lt;<span class="type">Footer</span>/&gt;</span><br><span class="line">			 		 &lt;/div&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="number">2.</span><span class="type">Header</span> 中定义触发函数 并通过<span class="keyword">this</span>.props.changeTitle来触发事件</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">import</span> <span class="type">React</span> from <span class="string">"react"</span>;</span><br><span class="line">	<span class="keyword">import</span> <span class="type">Title</span> from <span class="string">"./Header/Title"</span>;</span><br><span class="line">	export <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Header</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">		handleChange(e)&#123;</span><br><span class="line">			const title = e.target.value;</span><br><span class="line">			<span class="keyword">this</span>.props.changeTitle(title);</span><br><span class="line">		&#125;</span><br><span class="line">		render()&#123;</span><br><span class="line">			 <span class="keyword">return</span> (</span><br><span class="line">			 		&lt;div&gt;</span><br><span class="line">			 		  &lt;<span class="type">Title</span> title=&#123;<span class="keyword">this</span>.props.title&#125; /&gt;</span><br><span class="line">			 		  &lt;input value=&#123;<span class="keyword">this</span>.props.title&#125; onChange=&#123;<span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>)&#125;/&gt;</span><br><span class="line">			 		&lt;/div&gt;</span><br><span class="line">			 	);</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># router和单页应用	</span><br><span class="line">	</span><br><span class="line">	$ npm install -<span class="type">S</span> react-router-dom</span><br><span class="line">	$ npm install -<span class="type">S</span> history</span><br><span class="line"></span><br><span class="line"># 内联样式</span><br><span class="line"></span><br><span class="line">	const style=&#123;marginTop:<span class="string">"10px"</span>&#125;</span><br><span class="line"></span><br><span class="line">	&lt;div style=&#123;style&#125;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">## stateless component</span><br><span class="line">有的组件不需要任何的state 那么可以写成下面这样</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> <span class="type">React</span> from <span class="symbol">'reac</span>t';</span><br><span class="line">	export const <span class="type">Top</span> = (props)=&gt; &#123;</span><br><span class="line">	    <span class="keyword">return</span> (</span><br><span class="line">	        &lt;div&gt;</span><br><span class="line">	            &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-scroller bg-white box-shadow"</span>&gt;</span><br><span class="line">	                &lt;nav <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav nav-underline"</span>&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link active"</span> href=<span class="string">"#"</span>&gt;&#123;props.logo&#125;&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;</span><br><span class="line">	                        <span class="type">Friends</span></span><br><span class="line">	                        &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"badge badge-pill bg-light align-text-bottom"</span>&gt;<span class="number">27</span>&lt;/span&gt;</span><br><span class="line">	                    &lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Explore</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Suggestions</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Link</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Link</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Link</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Link</span>&lt;/a&gt;</span><br><span class="line">	                    &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-link"</span> href=<span class="string">"#"</span>&gt;<span class="type">Link</span>&lt;/a&gt;</span><br><span class="line">	                &lt;/nav&gt;</span><br><span class="line">	                &lt;h4&gt;&lt;/h4&gt;</span><br><span class="line">	            &lt;/div&gt;</span><br><span class="line">	        &lt;/div&gt;</span><br><span class="line">	    )</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">export 一个const 箭头函数也可以 而且可以接受props</span><br><span class="line">导入的时候 `<span class="keyword">import</span> &#123;<span class="type">Top</span>&#125; from './<span class="type">Top</span>'`</span><br><span class="line"></span><br><span class="line"># 生命周期</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>componentWillMount  </span><br><span class="line"></span><br><span class="line">执行constructor,componentWillMount 组件渲染之前，可用于setState等</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>componentDidMount</span><br><span class="line"></span><br><span class="line">render后执行，每次状态改变的时候会rerender</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>componentWillReceiveProps</span><br><span class="line"></span><br><span class="line">when componnet recieve <span class="keyword">new</span> props</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>shouldComponentUpdate</span><br><span class="line"></span><br><span class="line"><span class="type">Before</span> rendering,after receiving <span class="keyword">new</span> props or state</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>componentWillUpdate</span><br><span class="line"></span><br><span class="line"><span class="type">Before</span> rendering,after receiving <span class="keyword">new</span> props or state</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span>componentDidUpdate</span><br><span class="line"><span class="type">After</span> components<span class="symbol">'s</span> updates are flushed to <span class="type">DOM</span></span><br><span class="line"></span><br><span class="line"><span class="number">7.</span>componentWillUnmount</span><br><span class="line"><span class="type">Immediately</span> before removing component from <span class="type">DOM</span></span><br><span class="line"></span><br><span class="line"># react-router-dom</span><br><span class="line"></span><br><span class="line">本地用webpack , 经常会有 cant get/ 这种报错，解决如下：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>webpack.config.js</span><br><span class="line">	</span><br><span class="line">	devServer: &#123;</span><br><span class="line">        historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>router配置</span><br><span class="line">	</span><br><span class="line">	&lt;<span class="type">BrowserRouter</span>&gt;</span><br><span class="line">					&lt;div&gt;</span><br><span class="line">						&lt;ul&gt;</span><br><span class="line">							&lt;li&gt;&lt;<span class="type">Link</span> to=<span class="string">"/"</span>&gt;<span class="type">Home</span>&lt;/<span class="type">Link</span>&gt;&lt;/li&gt;</span><br><span class="line">							&lt;li&gt;&lt;<span class="type">Link</span> to=<span class="string">"/feature"</span>&gt;<span class="type">Feature</span>&lt;/<span class="type">Link</span>&gt;&lt;/li&gt;</span><br><span class="line">							&lt;li&gt;&lt;<span class="type">Link</span> to=<span class="string">"/article"</span>&gt;<span class="type">Article</span>&lt;/<span class="type">Link</span>&gt;&lt;/li&gt;</span><br><span class="line">						&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">						&lt;<span class="type">Switch</span>&gt;</span><br><span class="line">							&lt;<span class="type">Route</span> exact path=<span class="string">"/"</span> render=&#123;()=&gt; (</span><br><span class="line">								&lt;div&gt;</span><br><span class="line">                                		 &lt;<span class="type">Top</span> logo=&#123;<span class="keyword">this</span>.state.homeLink&#125;  /&gt;</span><br><span class="line">										 &lt;<span class="type">Header</span> name=&#123;<span class="string">"poly"</span>&#125; changeTitle=&#123;<span class="keyword">this</span>.changeTitle.bind(<span class="keyword">this</span>)&#125; title=&#123;<span class="keyword">this</span>.state.title&#125;/&gt;</span><br><span class="line">                                 		 &#123;homeCmp&#125;</span><br><span class="line">                                 		 &lt;button onClick=&#123;<span class="keyword">this</span>.onChangeHomeMounted.bind(<span class="keyword">this</span>)&#125; className=<span class="string">"btn btn-primary"</span>&gt;(un)<span class="type">Mount</span> <span class="type">Home</span> <span class="type">Component</span>&lt;/button&gt;</span><br><span class="line">                                 		 &lt;<span class="type">Footer</span>/&gt;</span><br><span class="line">								&lt;/div&gt;</span><br><span class="line">							)&#125; /&gt;</span><br><span class="line">							&lt;<span class="type">Route</span> exact path=<span class="string">"/feature"</span> component=&#123;<span class="type">Feature</span>&#125; /&gt;</span><br><span class="line">							&lt;<span class="type">Route</span> exact path=<span class="string">"/article"</span> component=&#123;<span class="type">Article</span>&#125; /&gt;</span><br><span class="line">						&lt;/<span class="type">Switch</span>&gt;</span><br><span class="line">					&lt;/div&gt;</span><br><span class="line">				&lt;/<span class="type">BrowserRouter</span>&gt;	</span><br><span class="line"></span><br><span class="line"># store &amp;&amp; flaux</span><br><span class="line">store 的出现让组件中 state中的数据得以分离到单个文件中：</span><br><span class="line"></span><br><span class="line">![](/images/<span class="type">WX20180223</span><span class="number">-095047</span>@<span class="number">2</span>x.png)	</span><br><span class="line"></span><br><span class="line"><span class="type">TodoStore</span> 对外开放的是一个对象 <span class="type">TodoStore</span>, 组件能监听<span class="type">TodoStore</span>的change <span class="type">TodoStore</span>.on(<span class="symbol">'chang</span>e',dosomething)</span><br><span class="line"></span><br><span class="line">## event</span><br><span class="line">首先要导入nodejs的 `<span class="keyword">import</span> &#123; <span class="type">EventEmitter</span> &#125; from <span class="string">"events"</span>;` events事件</span><br><span class="line">stores/<span class="type">TodoStore</span>.js</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> &#123; <span class="type">EventEmitter</span> &#125; from <span class="string">"events"</span>;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TodoStore</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span></span>&#123;<span class="comment">//继承的是EventEmitter</span></span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.todos = [</span><br><span class="line">					&#123;</span><br><span class="line">						id:<span class="number">1134567</span>,</span><br><span class="line">						text:<span class="string">"Go Shopping"</span>,</span><br><span class="line">						complete:<span class="literal">false</span></span><br><span class="line">					&#125;,</span><br><span class="line">					&#123;</span><br><span class="line">						id:<span class="number">1134568</span>,</span><br><span class="line">						text:<span class="string">"Pay Bills"</span>,</span><br><span class="line">						complete:<span class="literal">false</span></span><br><span class="line">					&#125;</span><br><span class="line">				]  </span><br><span class="line">		&#125;</span><br><span class="line">		getAll()&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.todos;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//每当引入todostore的时候都会实例化</span></span><br><span class="line">	const todoStore = <span class="keyword">new</span> <span class="type">TodoStore</span>;</span><br><span class="line">	todoStore.on(<span class="symbol">'chang</span>e',dosomething);</span><br><span class="line">	</span><br><span class="line">	export <span class="keyword">default</span> todoStore; </span><br><span class="line"></span><br><span class="line">pages/<span class="type">Todos</span>.js 组件中引入todoStore.js 并使用它的方法 <span class="type">TodoStore</span>.getAll() ,当todoStore.js中的数据改变时, 组件的视图会跟着改变</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> <span class="type">React</span> from <span class="symbol">'reac</span>t';</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> <span class="type">Todo</span> from <span class="string">"../components/Todo"</span>;</span><br><span class="line">	<span class="keyword">import</span> * as <span class="type">TodoActions</span> from <span class="string">"../Actions/TodoActions"</span>;</span><br><span class="line">	<span class="keyword">import</span> <span class="type">TodoStore</span> from <span class="string">"../stores/TodoStore"</span>;</span><br><span class="line"></span><br><span class="line">	export <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Todos</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.getTodos = <span class="keyword">this</span>.getTodos.bind(<span class="keyword">this</span>);</span><br><span class="line">			<span class="keyword">this</span>.state = &#123;</span><br><span class="line">				todos: <span class="type">TodoStore</span>.getAll()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		 </span><br><span class="line">		render()&#123;</span><br><span class="line">			const &#123;todos&#125; = <span class="keyword">this</span>.state;</span><br><span class="line">			const <span class="type">TodoComponents</span> = todos.map((todo)=&gt;&#123;</span><br><span class="line">				<span class="keyword">return</span> &lt;<span class="type">Todo</span> key=&#123;todo.id&#125; &#123;...todo&#125; /&gt;</span><br><span class="line">			&#125;);</span><br><span class="line">			<span class="keyword">return</span> (</span><br><span class="line">				&lt;div&gt;</span><br><span class="line">					&lt;h1&gt;<span class="type">Todos</span>&lt;/h1&gt;</span><br><span class="line">					&lt;button onClick=&#123;<span class="keyword">this</span>.createTodo.bind(<span class="keyword">this</span>)&#125;&gt;<span class="type">Create</span>!&lt;/button&gt;</span><br><span class="line">					&lt;button onClick=&#123;<span class="keyword">this</span>.loadTodos.bind(<span class="keyword">this</span>)&#125;&gt;<span class="type">Load</span>!&lt;/button&gt;</span><br><span class="line">					&lt;ul&gt;&#123;<span class="type">TodoComponents</span>&#125;&lt;/ul&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">## dispatcher</span><br><span class="line"></span><br><span class="line">当todoStore 发生change的时候, 它emit一个change 方法,组件可以动态改变,随时更新</span><br><span class="line"></span><br><span class="line">stores/todoStore.js中定义一个方法 并emit给组件</span><br><span class="line"></span><br><span class="line">![](/images/<span class="type">WX20180223</span><span class="number">-101719</span>@<span class="number">2</span>x.png)</span><br><span class="line"></span><br><span class="line">pages/todo.js 中接收 并实时更新</span><br><span class="line">![](/images/<span class="type">WX20180223</span><span class="number">-101939</span>@<span class="number">2</span>x.png)</span><br><span class="line"></span><br><span class="line">现在可以把todoStore 挂载到全局 `window.todoStore = todoStore;<span class="comment">//在console打印 todoStore.createTodo('test')试试`</span></span><br><span class="line"></span><br><span class="line">把todoStore注册到dispatcher中,便于处理不同状态的actions</span><br><span class="line"></span><br><span class="line">	npm install -<span class="type">S</span> flaux</span><br><span class="line"></span><br><span class="line">dispatcher.js</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> &#123;<span class="type">Dispatcher</span>&#125; from <span class="string">"flux"</span>;</span><br><span class="line"></span><br><span class="line">	export <span class="keyword">default</span> <span class="keyword">new</span> <span class="type">Dispatcher</span>;</span><br><span class="line"></span><br><span class="line">todoStore.js</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> &#123; <span class="type">EventEmitter</span> &#125; from <span class="string">"events"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> dispatcher from <span class="string">"../dispatcher"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TodoStore</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span></span>&#123;</span><br><span class="line">		constructor()&#123;</span><br><span class="line">			<span class="keyword">super</span>();</span><br><span class="line">			<span class="keyword">this</span>.todos = [</span><br><span class="line">					&#123;</span><br><span class="line">						id:<span class="number">1134567</span>,</span><br><span class="line">						text:<span class="string">"Go Shopping"</span>,</span><br><span class="line">						complete:<span class="literal">false</span></span><br><span class="line">					&#125;,</span><br><span class="line">					&#123;</span><br><span class="line">						id:<span class="number">1134568</span>,</span><br><span class="line">						text:<span class="string">"Pay Water Bills"</span>,</span><br><span class="line">						complete:<span class="literal">false</span></span><br><span class="line">					&#125;</span><br><span class="line">				]  </span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		createTodo(text)&#123;</span><br><span class="line">			const id = <span class="type">Date</span>.now();</span><br><span class="line">			<span class="keyword">this</span>.todos.push(&#123;</span><br><span class="line">				id,</span><br><span class="line">				text,</span><br><span class="line">				complete:<span class="literal">false</span></span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">this</span>.emit(<span class="symbol">'chang</span>e');</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		getAll()&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.todos;</span><br><span class="line">		&#125;</span><br><span class="line">		handleActions(action)&#123;</span><br><span class="line">			console.log(<span class="symbol">'todoStore</span> recieved an action:',action);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	const todoStore = <span class="keyword">new</span> <span class="type">TodoStore</span>;</span><br><span class="line"></span><br><span class="line">	dispatcher.register( todoStore.handleActions.bind(todoStore) );</span><br><span class="line"></span><br><span class="line">	window.dispatcher = dispatcher;<span class="comment">//console打印 dispatcher.dispatcher(&#123;type:'',text:''&#125;)</span></span><br><span class="line"></span><br><span class="line">	window.todoStore = todoStore;<span class="comment">//在console打印 todoStore.createTodo('test')试试</span></span><br><span class="line"></span><br><span class="line">	export <span class="keyword">default</span> todoStore; </span><br><span class="line"></span><br><span class="line">## actions</span><br><span class="line"></span><br><span class="line">actions/<span class="type">TodoActions</span>.js</span><br><span class="line"></span><br><span class="line">!()[/images/<span class="type">WX20180223</span><span class="number">-103841</span>@<span class="number">2</span>x.png]</span><br><span class="line"></span><br><span class="line">pages/<span class="type">Todos</span>.js 调用actions　</span><br><span class="line"></span><br><span class="line">	<span class="keyword">import</span> * as <span class="type">TodoActions</span> from <span class="string">"../Actions/TodoActions"</span>;</span><br><span class="line"></span><br><span class="line">	createTodo()&#123;</span><br><span class="line">		<span class="type">TodoActions</span>.createTodo( <span class="type">Date</span>.now() );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            	&lt;button onClick=&#123;<span class="keyword">this</span>.createTodo.bind(<span class="keyword">this</span>)&#125;&gt;<span class="type">Create</span>!&lt;/button&gt;</span><br><span class="line">            	&lt;button onClick=&#123;<span class="keyword">this</span>.loadTodos.bind(<span class="keyword">this</span>)&#125;&gt;<span class="type">Load</span>!&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"># redux</span><br><span class="line"></span><br><span class="line">!()[/images/<span class="type">WX20180224</span><span class="number">-101336</span>@<span class="number">2</span>x.png]</span><br><span class="line"></span><br><span class="line">对象的重新赋值</span><br><span class="line"></span><br><span class="line">--<span class="type">Object</span>.assign</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;name:<span class="symbol">'alic</span>e',age:<span class="number">12</span>&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="type">Object</span>.assgin(&#123;&#125;,a,&#123;name:<span class="symbol">'fre</span>d'&#125;);<span class="comment">//&#123;name:'fred',age:12&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//a:&#123;name:'alice',age:12&#125;</span></span><br><span class="line"></span><br><span class="line">-- concat</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.concat(<span class="number">3</span>);<span class="comment">//[1,2,3]  </span></span><br><span class="line"><span class="comment">//a:[1,2]</span></span><br><span class="line"></span><br><span class="line">--filter</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.filter(<span class="keyword">val</span>=&gt;<span class="keyword">val</span>!==<span class="number">1</span>); <span class="comment">//2</span></span><br><span class="line"><span class="comment">//a:[1,2]</span></span><br><span class="line"></span><br><span class="line">--reduce map</span><br><span class="line"></span><br><span class="line">	npm install -<span class="type">S</span> redux</span><br><span class="line"></span><br><span class="line">## 第一篇:</span><br></pre></td></tr></table></figure>
-<pre><code>import {createStore} from &apos;redux&apos;;
+<h1 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h1><pre><code>import React from &quot;react&quot;;
+import ReactDom from &quot;react-dom&quot;;
+class Layout extends React.Component{
+    render(){
+         return (
+                  &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+             );
+
+    }
+}
+
+const app = document.getElementById(&apos;app&apos;);
+ReactDom.render(&lt;Layout/&gt;,app);
+</code></pre><ul>
+<li><p>jsx 元素必须有一个包裹，如果这样就报错</p>
+<pre><code>render(){
+     return (
+              &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+              &lt;h1&gt;sdfsdf时尚&lt;/h1&gt;
+         );
+
+}
+</code></pre></li>
+<li><p>变量的使用</p>
+<pre><code>render(){
+    const name = &quot;alice&quot;;
+     return (
+              &lt;h1&gt;{name} sdfsdf时尚aaabbb&lt;/h1&gt;
+         );
+
+}
+
+ //表达式
+ return (
+      &lt;h1&gt;{4*4} sdfsdf时尚aaabbb&lt;/h1&gt;
+ );
+
+//使用函数
+return (
+      &lt;h1&gt;{(function(){return 3;})()} sdfsdf时尚aaabbb&lt;/h1&gt;
+ );    
+
+ //方法
+ class Layout extends React.Component{
+    getVal(){
+        return &apos;will&apos;;
+    }
+    render(){
+         return (
+                  &lt;h1&gt;{this.getVal()} sdfsdf时尚aaabbb&lt;/h1&gt;
+             );
+
+    }
+}
+//constructor方法 放各种变量
+constructor(){
+    super();
+    this.name = &apos;will&apos;;
+}
+render(){
+     return (
+              &lt;h1&gt;{this.name} sdfsdf时尚aaabbb&lt;/h1&gt;
+         );
+
+}    
+</code></pre></li>
+<li><p>文件组件模块化</p>
+<p>  client.js</p>
+<pre><code>import React from &quot;react&quot;;
+import ReactDom from &quot;react-dom&quot;;
+import Layout from &apos;./components/Layout&apos;;
+const app = document.getElementById(&apos;app&apos;);
+ReactDom.render(&lt;Layout/&gt;,app);
+</code></pre><p>  components/Layout.js</p>
+<pre><code>import React from &quot;react&quot;;
+export default class Layout extends React.Component{
+    constructor(){
+        super();
+        this.name = &apos;will&apos;;
+    }
+    render(){
+         return (
+                  &lt;h1&gt;{this.name} sdfsdf时尚aaabbb&lt;/h1&gt;
+             );
+
+    }
+}
+</code></pre></li>
+<li><p>state使用 状态自动更新</p>
+<pre><code>constructor(){
+    super();
+    this.state = {name:&apos;alice&apos;};
+}  
+render(){
+    setTimeout(()=&gt;{this.setState({name:&apos;bob&apos;})},1000);
+     return (
+              &lt;div&gt;
+                  {this.state.name}
+                  &lt;Header/&gt;
+                  &lt;Footer/&gt;
+              &lt;/div&gt;
+         );
+
+}    
+</code></pre></li>
+<li><p>props</p>
+<p>  父组件 Header</p>
+<pre><code>render(){
+    const title=&quot;Welcome Will&quot;;
+     return (
+               &lt;Title title={title}/&gt;
+         );
+
+}
+</code></pre><p>  子组件 Title</p>
+<pre><code>render(){
+     return (
+              &lt;h1&gt;{this.props.title}&lt;/h1&gt;
+         );
+
+}    
+</code></pre><p>  state 结合 props</p>
+<pre><code>//父组件 Header
+constructor(){
+    super();
+    this.state={title:&apos;will&apos;};
+}
+
+render(){
+    setTimeout(()=&gt;{
+        this.setState({title:&apos;welcome will&apos;})
+    },1000);
+     return (
+               &lt;Title title={this.state.title} /&gt;
+         );
+
+}
+
+//子组件 Title    
+render(){
+     return (
+              &lt;h1&gt;{this.props.title}&lt;/h1&gt;
+         );
+
+}    
+</code></pre></li>
+</ul>
+<h1 id="react-事件"><a href="#react-事件" class="headerlink" title="react 事件"></a>react 事件</h1><p>eg-0:子组件如何调用父组件函数：</p>
+<p>父组件中定义函数　onGree 并以prop 的形势传递给Home子组件 ，子组件中调用　onGreet</p>
+<pre><code>//父组件 layout.js
+onGreet(){
+    alert(&apos;greet from the layout component&apos;)
+}
+
+// render 方法中
+&lt;Home greet={this.onGreet}&gt;this is a paragraph &lt;/Home&gt;
+
+//子组件
+&lt;button onClick={this.props.greet} className=&quot;btn btn-primary&quot;&gt;greet&lt;/button&gt;
+</code></pre><p>eg-1:使用了 state 父子组件数据传递</p>
+<p>layout.js</p>
+<pre><code>constructor(){
+    super();
+    this.state = {
+        title:&apos;alice&apos;,
+        homeLink:&apos;Home&apos;
+    };
+} 
+onChangeLinkName(newName){
+    this.setState({
+        homeLink : newName
+    })
+}
+
+//render method
+&lt;Top logo={this.state.homeLink}  /&gt; //Top 里面无state 
+ &lt;Home
+     user={user}
+     greet={this.onGreet}
+     changeLink={this.onChangeLinkName.bind(this)}
+ &gt;this is a paragraph &lt;/Home&gt;
+</code></pre><p>home.js</p>
+<pre><code>constructor(props){
+    super();
+
+    //初始化state
+    this.state = {
+        age : props.user.age,
+        homeLink: &apos;New Home&apos;
+    }
+} 
+onChangeLink(){
+    this.props.changeLink(this.state.homeLink)
+}
+&lt;button onClick={this.onChangeLink.bind(this)} className=&quot;btn btn-primary&quot;&gt;change Top Home Link&lt;/button&gt;
+</code></pre><p>通过 Home.js 里面的 change Top Home Link , 调用Layout中的changeLink方法修改了layout中的HomeLink state,最终影响Top的prop log</p>
+<p>eg-2: 数据双向绑定：<br>通过子组件state改变 传递子组件state 给父组件, 子组件state改变的原因是使input能输入,继续上面</p>
+<p>layout.js</p>
+<pre><code>&lt;Home
+     user={user}
+     greet={this.onGreet}
+     changeLink={this.onChangeLinkName.bind(this)}
+     initialLink={this.state.homeLink}
+ &gt;this is a paragraph &lt;/Home&gt;
+</code></pre><p>home.js</p>
+<pre><code>constructor(props){
+    super();
+
+    //初始化state
+    this.state = {
+        age : props.user.age,
+        homeLink: props.initialLink
+    }
+}
+
+onChangeLink(){
+    this.props.changeLink(this.state.homeLink)
+}
+onHandleChange(event){
+    this.setState({
+        homeLink:event.target.value
+    })
+}
+&lt;input type=&quot;text&quot; value={this.state.homeLink} onChange={ (event)=&gt; this.onHandleChange(event)  }/&gt;
+            &lt;button onClick={this.onChangeLink.bind(this)} className=&quot;btn btn-primary&quot;&gt;change Top Home Link&lt;/button&gt;
+</code></pre><p>eg-3:</p>
+<p>1.Layout中创建事件函数，并将该事件作为属性传给Header</p>
+<pre><code>import React from &quot;react&quot;;
+import Header from &quot;./Header&quot;;
+import Footer from &quot;./Footer&quot;;
+export default class Layout extends React.Component{
+    constructor(){
+        super();
+        this.state = {title:&apos;alice&apos;};
+    } 
+    changeTitle(title){
+        this.setState({title})
+    } 
+    render(){
+        //setTimeout(()=&gt;this.setState({title:&apos;joe&apos;}),1000)
+         return (
+                  &lt;div&gt;
+                      &lt;Header changeTitle={this.changeTitle.bind(this)} title={this.state.title}/&gt;
+                      &lt;Footer/&gt;
+                  &lt;/div&gt;
+             );
+
+    }
+}
+</code></pre><p>2.Header 中定义触发函数 并通过this.props.changeTitle来触发事件</p>
+<pre><code>import React from &quot;react&quot;;
+import Title from &quot;./Header/Title&quot;;
+export default class Header extends React.Component{
+    handleChange(e){
+        const title = e.target.value;
+        this.props.changeTitle(title);
+    }
+    render(){
+         return (
+                 &lt;div&gt;
+                   &lt;Title title={this.props.title} /&gt;
+                   &lt;input value={this.props.title} onChange={this.handleChange.bind(this)}/&gt;
+                 &lt;/div&gt;
+             );
+
+    }
+}
+</code></pre><h1 id="router和单页应用"><a href="#router和单页应用" class="headerlink" title="router和单页应用"></a>router和单页应用</h1><pre><code>$ npm install -S react-router-dom
+$ npm install -S history
+</code></pre><h1 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h1><pre><code>const style={marginTop:&quot;10px&quot;}
+
+&lt;div style={style}&gt;&lt;/div&gt;
+</code></pre><h2 id="stateless-component"><a href="#stateless-component" class="headerlink" title="stateless component"></a>stateless component</h2><p>有的组件不需要任何的state 那么可以写成下面这样</p>
+<pre><code>import React from &apos;react&apos;;
+export const Top = (props)=&gt; {
+    return (
+        &lt;div&gt;
+            &lt;div class=&quot;nav-scroller bg-white box-shadow&quot;&gt;
+                &lt;nav class=&quot;nav nav-underline&quot;&gt;
+                    &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;{props.logo}&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;
+                        Friends
+                        &lt;span class=&quot;badge badge-pill bg-light align-text-bottom&quot;&gt;27&lt;/span&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Explore&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Suggestions&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                    &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+                &lt;/nav&gt;
+                &lt;h4&gt;&lt;/h4&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    )
+};
+</code></pre><p>export 一个const 箭头函数也可以 而且可以接受props<br>导入的时候 <code>import {Top} from &#39;./Top&#39;</code></p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>1.componentWillMount  </p>
+<p>执行constructor,componentWillMount 组件渲染之前，可用于setState等</p>
+<p>2.componentDidMount</p>
+<p>render后执行，每次状态改变的时候会rerender</p>
+<p>3.componentWillReceiveProps</p>
+<p>when componnet recieve new props</p>
+<p>4.shouldComponentUpdate</p>
+<p>Before rendering,after receiving new props or state</p>
+<p>5.componentWillUpdate</p>
+<p>Before rendering,after receiving new props or state</p>
+<p>6.componentDidUpdate<br>After components’s updates are flushed to DOM</p>
+<p>7.componentWillUnmount<br>Immediately before removing component from DOM</p>
+<h1 id="react-router-dom"><a href="#react-router-dom" class="headerlink" title="react-router-dom"></a>react-router-dom</h1><p>本地用webpack , 经常会有 cant get/ 这种报错，解决如下：</p>
+<p>1.webpack.config.js</p>
+<pre><code>devServer: {
+    historyApiFallback: true,
+},
+</code></pre><p>2.router配置</p>
+<pre><code>&lt;BrowserRouter&gt;
+                &lt;div&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/feature&quot;&gt;Feature&lt;/Link&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;Link to=&quot;/article&quot;&gt;Article&lt;/Link&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+
+                    &lt;Switch&gt;
+                        &lt;Route exact path=&quot;/&quot; render={()=&gt; (
+                            &lt;div&gt;
+                                     &lt;Top logo={this.state.homeLink}  /&gt;
+                                     &lt;Header name={&quot;poly&quot;} changeTitle={this.changeTitle.bind(this)} title={this.state.title}/&gt;
+                                      {homeCmp}
+                                      &lt;button onClick={this.onChangeHomeMounted.bind(this)} className=&quot;btn btn-primary&quot;&gt;(un)Mount Home Component&lt;/button&gt;
+                                      &lt;Footer/&gt;
+                            &lt;/div&gt;
+                        )} /&gt;
+                        &lt;Route exact path=&quot;/feature&quot; component={Feature} /&gt;
+                        &lt;Route exact path=&quot;/article&quot; component={Article} /&gt;
+                    &lt;/Switch&gt;
+                &lt;/div&gt;
+            &lt;/BrowserRouter&gt;    
+</code></pre><h1 id="store-amp-amp-flaux"><a href="#store-amp-amp-flaux" class="headerlink" title="store &amp;&amp; flaux"></a>store &amp;&amp; flaux</h1><p>store 的出现让组件中 state中的数据得以分离到单个文件中：</p>
+<p><img src="/images/WX20180223-095047@2x.png" alt="">    </p>
+<p>TodoStore 对外开放的是一个对象 TodoStore, 组件能监听TodoStore的change TodoStore.on(‘change’,dosomething)</p>
+<h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><p>首先要导入nodejs的 <code>import { EventEmitter } from &quot;events&quot;;</code> events事件<br>stores/TodoStore.js</p>
+<pre><code>import { EventEmitter } from &quot;events&quot;;
+class TodoStore extends EventEmitter{//继承的是EventEmitter
+    constructor(){
+        super();
+        this.todos = [
+                {
+                    id:1134567,
+                    text:&quot;Go Shopping&quot;,
+                    complete:false
+                },
+                {
+                    id:1134568,
+                    text:&quot;Pay Bills&quot;,
+                    complete:false
+                }
+            ]  
+    }
+    getAll(){
+        return this.todos;
+    }
+}
+
+//每当引入todostore的时候都会实例化
+const todoStore = new TodoStore;
+todoStore.on(&apos;change&apos;,dosomething);
+
+export default todoStore; 
+</code></pre><p>pages/Todos.js 组件中引入todoStore.js 并使用它的方法 TodoStore.getAll() ,当todoStore.js中的数据改变时, 组件的视图会跟着改变</p>
+<pre><code>import React from &apos;react&apos;;
+
+import Todo from &quot;../components/Todo&quot;;
+import * as TodoActions from &quot;../Actions/TodoActions&quot;;
+import TodoStore from &quot;../stores/TodoStore&quot;;
+
+export default class Todos extends React.Component{
+    constructor(){
+        super();
+        this.getTodos = this.getTodos.bind(this);
+        this.state = {
+            todos: TodoStore.getAll()
+        }
+    }
+
+    render(){
+        const {todos} = this.state;
+        const TodoComponents = todos.map((todo)=&gt;{
+            return &lt;Todo key={todo.id} {...todo} /&gt;
+        });
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Todos&lt;/h1&gt;
+                &lt;button onClick={this.createTodo.bind(this)}&gt;Create!&lt;/button&gt;
+                &lt;button onClick={this.loadTodos.bind(this)}&gt;Load!&lt;/button&gt;
+                &lt;ul&gt;{TodoComponents}&lt;/ul&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre><h2 id="dispatcher"><a href="#dispatcher" class="headerlink" title="dispatcher"></a>dispatcher</h2><p>当todoStore 发生change的时候, 它emit一个change 方法,组件可以动态改变,随时更新</p>
+<p>stores/todoStore.js中定义一个方法 并emit给组件</p>
+<p><img src="/images/WX20180223-101719@2x.png" alt=""></p>
+<p>pages/todo.js 中接收 并实时更新<br><img src="/images/WX20180223-101939@2x.png" alt=""></p>
+<p>现在可以把todoStore 挂载到全局 <code>window.todoStore = todoStore;//在console打印 todoStore.createTodo(&#39;test&#39;)试试</code></p>
+<p>把todoStore注册到dispatcher中,便于处理不同状态的actions</p>
+<pre><code>npm install -S flaux
+</code></pre><p>dispatcher.js</p>
+<pre><code>import {Dispatcher} from &quot;flux&quot;;
+
+export default new Dispatcher;
+</code></pre><p>todoStore.js</p>
+<pre><code>import { EventEmitter } from &quot;events&quot;;
+
+import dispatcher from &quot;../dispatcher&quot;;
+
+class TodoStore extends EventEmitter{
+    constructor(){
+        super();
+        this.todos = [
+                {
+                    id:1134567,
+                    text:&quot;Go Shopping&quot;,
+                    complete:false
+                },
+                {
+                    id:1134568,
+                    text:&quot;Pay Water Bills&quot;,
+                    complete:false
+                }
+            ]  
+
+    }
+
+    createTodo(text){
+        const id = Date.now();
+        this.todos.push({
+            id,
+            text,
+            complete:false
+        });
+
+        this.emit(&apos;change&apos;);
+
+    }
+    getAll(){
+        return this.todos;
+    }
+    handleActions(action){
+        console.log(&apos;todoStore recieved an action:&apos;,action);
+    }
+}
+
+const todoStore = new TodoStore;
+
+dispatcher.register( todoStore.handleActions.bind(todoStore) );
+
+window.dispatcher = dispatcher;//console打印 dispatcher.dispatcher({type:&apos;&apos;,text:&apos;&apos;})
+
+window.todoStore = todoStore;//在console打印 todoStore.createTodo(&apos;test&apos;)试试
+
+export default todoStore; 
+</code></pre><h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><p>actions/TodoActions.js</p>
+<p>!()[/images/WX20180223-103841@2x.png]</p>
+<p>pages/Todos.js 调用actions　</p>
+<pre><code>import * as TodoActions from &quot;../Actions/TodoActions&quot;;
+
+createTodo(){
+    TodoActions.createTodo( Date.now() );
+}
+
+render(){
+    return (
+        &lt;div&gt;
+            &lt;button onClick={this.createTodo.bind(this)}&gt;Create!&lt;/button&gt;
+            &lt;button onClick={this.loadTodos.bind(this)}&gt;Load!&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+</code></pre><h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><p>!()[/images/WX20180224-101336@2x.png]</p>
+<p>对象的重新赋值</p>
+<p>–Object.assign</p>
+<p>var a = {name:’alice’,age:12}<br>var b = Object.assgin({},a,{name:’fred’});//{name:’fred’,age:12}</p>
+<p>//a:{name:’alice’,age:12}</p>
+<p>– concat</p>
+<p>var a = [1,2];<br>var b = a.concat(3);//[1,2,3]<br>//a:[1,2]</p>
+<p>–filter</p>
+<p>var a = [1,2];<br>var b = a.filter(val=&gt;val!==1); //2<br>//a:[1,2]</p>
+<p>–reduce map</p>
+<pre><code>npm install -S redux
+</code></pre><h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇:"></a>第一篇:</h2><pre><code>import {createStore} from &apos;redux&apos;;
 const reducer = function(state,action){
     if(action.type==&apos;INC&apos;){
         return state+action.payload;
@@ -394,8 +888,7 @@ store.subscribe(()=&gt;{
     console.log(&apos;state changed&apos;,store.getState());
 });
 store.dispatch({type:&apos;INC&apos;,payload:1});
-</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 第二篇：combineReducers</span></span></span><br></pre></td></tr></table></figure>
-<pre><code>import {combineReducers,createStore} from &apos;redux&apos;;
+</code></pre><h2 id="第二篇：combineReducers"><a href="#第二篇：combineReducers" class="headerlink" title="第二篇：combineReducers"></a>第二篇：combineReducers</h2><pre><code>import {combineReducers,createStore} from &apos;redux&apos;;
 
 const userReducer = (state={},action)=&gt;{
     switch (action.type) {
@@ -424,8 +917,7 @@ store.subscribe(()=&gt;{
 });
 store.dispatch({type:&apos;CHANGE_NAME&apos;,payload:&apos;will&apos;});
 store.dispatch({type:&apos;CHANGE_AGE&apos;,payload:12});
-</code></pre><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 第三篇：middleware</span></span></span><br></pre></td></tr></table></figure>
-<pre><code>import {applyMiddleware,createStore} from &apos;redux&apos;;
+</code></pre><h2 id="第三篇：middleware"><a href="#第三篇：middleware" class="headerlink" title="第三篇：middleware"></a>第三篇：middleware</h2><pre><code>import {applyMiddleware,createStore} from &apos;redux&apos;;
 
 const reducer = (initialState = 0 ,action)=&gt;{
     switch (action.type) {
@@ -471,8 +963,7 @@ store.dispatch({type:&apos;DEC&apos;});
 store.dispatch({type:&apos;DEC&apos;});
 store.dispatch({type:&apos;DEC&apos;});
 store.dispatch({type:&apos;E&apos;});
-</code></pre><p>```</p>
-
+</code></pre>
       
     </div>
     
@@ -664,7 +1155,7 @@ store.dispatch({type:&apos;E&apos;});
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初探"><span class="nav-number">2.</span> <span class="nav-text">初探</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-事件"><span class="nav-number">3.</span> <span class="nav-text">react 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#router和单页应用"><span class="nav-number">4.</span> <span class="nav-text">router和单页应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联样式"><span class="nav-number">5.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stateless-component"><span class="nav-number">5.1.</span> <span class="nav-text">stateless component</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">6.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#react-router-dom"><span class="nav-number">7.</span> <span class="nav-text">react-router-dom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#store-amp-amp-flaux"><span class="nav-number">8.</span> <span class="nav-text">store &amp;&amp; flaux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">8.1.</span> <span class="nav-text">event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatcher"><span class="nav-number">8.2.</span> <span class="nav-text">dispatcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#actions"><span class="nav-number">8.3.</span> <span class="nav-text">actions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redux"><span class="nav-number">9.</span> <span class="nav-text">redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一篇"><span class="nav-number">9.1.</span> <span class="nav-text">第一篇:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二篇：combineReducers"><span class="nav-number">9.2.</span> <span class="nav-text">第二篇：combineReducers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三篇：middleware"><span class="nav-number">9.3.</span> <span class="nav-text">第三篇：middleware</span></a></li></ol></li></ol></div>
             
 
           </div>
