@@ -1688,15 +1688,28 @@ render(){
 }
 </code></pre><h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><p>!()[/images/WX20180224-101336@2x.png]</p>
 <p>对象的重新赋值</p>
-<p>–Object.assign</p>
-<p>var a = {name:’alice’,age:12}<br>var b = Object.assgin({},a,{name:’fred’});//{name:’fred’,age:12}</p>
-<p>//a:{name:’alice’,age:12}</p>
-<p>– concat</p>
-<p>var a = [1,2];<br>var b = a.concat(3);//[1,2,3]<br>//a:[1,2]</p>
-<p>–filter</p>
-<p>var a = [1,2];<br>var b = a.filter(val=&gt;val!==1); //2<br>//a:[1,2]</p>
-<p>–reduce map</p>
-<pre><code>npm install -S redux
+<pre><code>--Object.assign
+
+var a = {name:&apos;alice&apos;,age:12}
+var b = Object.assgin({},a,{name:&apos;fred&apos;});//{name:&apos;fred&apos;,age:12}
+
+//a:{name:&apos;alice&apos;,age:12}
+
+-- concat
+
+var a = [1,2];
+var b = a.concat(3);//[1,2,3]  
+//a:[1,2]
+
+--filter
+
+var a = [1,2];
+var b = a.filter(val=&gt;val!==1); //2
+//a:[1,2]
+
+--reduce map
+
+npm install -S redux
 </code></pre><h2 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇:"></a>第一篇:</h2><pre><code>import {createStore} from &apos;redux&apos;;
 const reducer = function(state,action){
     if(action.type==&apos;INC&apos;){
